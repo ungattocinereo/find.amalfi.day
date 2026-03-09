@@ -4,10 +4,10 @@
     "of": "of",
     "next": "Next",
     "prev": "Back",
-    "back": "← Back",
+    "back": "\u2190 Back",
     "download_pdf": "PDF",
-    "offline_ready": "✓ Ready for offline use!",
-    "downloading": "Downloading guide for offline use…",
+    "offline_ready": "\u2713 Ready for offline use!",
+    "downloading": "Downloading guide for offline use\u2026",
     "tldr_label": "Quick Summary",
     "choose_start": "Where are you coming from?",
     "from_amalfi": "From Amalfi",
@@ -15,165 +15,166 @@
     "now_in_atrani": "You are now entering Atrani",
     "entering_tunnel_route": "Continue through the village",
     "save_title": "Save for offline use",
-    "save_hint": "Mobile signal is weak along the route due to the mountains. Tap <strong>Share</strong> → <strong>Add to Home Screen</strong> to save this guide to your phone."
+    "save_hint": "Mobile signal is weak along the route due to the mountains. Tap <strong>Share</strong> \u2192 <strong>Add to Home Screen</strong> to save this guide to your phone."
   },
   "house": {
     "title": "Finding Greg's House",
     "subtitle": "Step-by-step walking guide",
     "tldr": "15-minute walk from Amalfi. Follow the coastal road through the tunnel to Atrani, then navigate through the charming streets up to the house.",
-    "time_amalfi": "~15 min walk · 33 steps",
-    "time_atrani": "~8 min walk · 21 steps",
+    "porters": "Have heavy luggage? Look for <strong>Amalfi Porters</strong> \u2014 small golf carts right at the port and bus stop. For about \u20ac20 they\u2019ll drive you to the house area and can carry your bags up the ~200 steps to the apartment.",
+    "time_amalfi": "~15 min walk \u00b7 33 steps",
+    "time_atrani": "~8 min walk \u00b7 21 steps",
     "arrived": "Welcome to Greg's House!"
   },
   "awesome": {
     "title": "Finding the Meeting Point",
     "subtitle": "Step-by-step walking guide",
     "tldr": "Walk from Amalfi through the coastal tunnel to Atrani. The meeting point is just past the tunnel exit at the Atrani center.",
-    "time_amalfi": "~12 min walk · 15 steps",
+    "time_amalfi": "~12 min walk \u00b7 15 steps",
     "from_atrani_title": "From Atrani",
     "from_atrani_desc": "The meeting point is right at the tunnel exit in Atrani. If you're already in Atrani, it's just a short walk.",
     "arrived": "You've reached the Meeting Point!"
   },
   "routes": {
-    "amalfi_house": "Amalfi → Greg's House",
-    "atrani_house": "Atrani → Greg's House",
-    "amalfi_awesome": "Amalfi → Meeting Point"
+    "amalfi_house": "Amalfi \u2192 Greg's House",
+    "atrani_house": "Atrani \u2192 Greg's House",
+    "amalfi_awesome": "Amalfi \u2192 Meeting Point"
   },
   "steps": {
     "seg-a": {
       "01": {
-        "caption": "Start at the Amalfi harbor promenade. You'll see the 'imbarco / boarding' sign pointing to the ferry dock. Walk along the seafront with the water on your right.",
-        "alt": "Amalfi harbor promenade with imbarco boarding sign and sea view"
+        "caption": "You\u2019ve just arrived at the Amalfi ferry port. Climb the short flight of stairs from the dock \u2014 you\u2019ll see the \u2018Porto di Amalfi\u2019 sign pointing the way up.",
+        "alt": "Stairs at Porto di Amalfi ferry dock with Porto di Amalfi sign"
       },
       "02": {
-        "caption": "Continue along the coastal road heading east. Keep the sea on your right side.",
-        "alt": "Coastal road leaving Amalfi with sea view"
+        "caption": "You\u2019re now on the Amalfi harbor promenade, just a few steps from the bus stop. Looking ahead, this is the direction you need to go. Don\u2019t walk back toward the sea \u2014 there\u2019s only a lighthouse behind you.",
+        "alt": "Amalfi harbor promenade with lantern and imbarco boarding sign"
       },
       "03": {
-        "caption": "Follow the road as it curves along the coastline. You'll see the mountains rising on your left.",
-        "alt": "Curved coastal road with mountain views"
+        "caption": "Walk along the Amalfi promenade. The bus stop is just a short walk ahead.",
+        "alt": "Amalfi promenade with parked cars and sea view"
       },
       "04": {
-        "caption": "Keep walking along the promenade. The road is well-paved and easy to follow.",
-        "alt": "Seaside promenade heading toward Atrani"
+        "caption": "This is the Amalfi bus stop. Buses from Salerno, Sorrento, Agerola, and other Amalfi Coast towns stop here, so it\u2019s always busy. From this point, head quickly in the direction shown.",
+        "alt": "Amalfi SITA bus stop with bus shelter and toilette sign"
       },
       "05": {
-        "caption": "Continue straight ahead. You're on the main road connecting Amalfi to Atrani.",
-        "alt": "Main road between Amalfi and Atrani"
+        "caption": "Continue along the coastal promenade. You\u2019ll pass several beautiful restaurants with stunning sea views.",
+        "alt": "Amalfi coastal promenade with Pizza Sirena restaurant and pine trees"
       },
       "06": {
-        "caption": "The road continues along the coast. Watch for the tunnel entrance coming up ahead.",
-        "alt": "Coastal road approaching the tunnel area"
+        "caption": "This is your turn. If you keep going straight, you\u2019ll eventually reach Atrani too \u2014 but I strongly recommend turning left here. It\u2019s the shorter, safer route.",
+        "alt": "Amalfi street with flower pots and ornate lantern at the turn point"
       },
       "07": {
-        "caption": "You'll see the road narrowing as you approach the tunnel section.",
-        "alt": "Road narrowing near tunnel approach"
+        "caption": "Cross the pedestrian crossing and turn left. You\u2019ll reach Caf\u00e9 D\u00e9j\u00e0 Vu, and next to it there\u2019s a tunnel. This tunnel is the shortest, safest, and fastest way to Atrani.",
+        "alt": "Crosswalk near Caf\u00e9 D\u00e9j\u00e0 Vu and the pedestrian tunnel to Atrani"
       },
       "08": {
-        "caption": "Keep following the main road. Stay on the sidewalk where available.",
-        "alt": "Road with sidewalk approaching Atrani"
+        "caption": "Here you can see Caf\u00e9 D\u00e9j\u00e0 Vu on the left, and to the right of it \u2014 the tunnel to Atrani. Walk straight in.",
+        "alt": "Caf\u00e9 D\u00e9j\u00e0 Vu with the tunnel entrance to Atrani on the right"
       },
       "09": {
-        "caption": "Continue along the road. The Atrani tunnel entrance is getting closer.",
-        "alt": "Road approaching Atrani tunnel area"
+        "caption": "As you enter the tunnel, you\u2019ll see gates directly ahead. They\u2019re usually open during the day \u2014 it\u2019s a path to the town cemetery. You don\u2019t need to go through them, just keep walking along the tunnel.",
+        "alt": "Inside the tunnel with cemetery gates and green traffic light ahead"
       },
       "10": {
-        "caption": "Almost at the tunnel. Keep following the road straight ahead.",
-        "alt": "Final stretch before the Atrani tunnel"
+        "caption": "Continue through the tunnel. You can see light from the exit up ahead.",
+        "alt": "Inside the tunnel walking toward the light at the exit"
       },
       "11": {
-        "caption": "You can see the tunnel entrance area up ahead now.",
-        "alt": "Approaching the grand Atrani tunnel entrance"
+        "caption": "Just before the exit, you\u2019ll notice a public restroom on the right side and the exit from a parking garage.",
+        "alt": "Tunnel near exit with public restroom sign on the right"
       },
       "12": {
-        "caption": "The tunnel entrance is just ahead. Keep going straight.",
-        "alt": "Near the Atrani tunnel portal"
+        "caption": "You\u2019ve exited the tunnel. On the left is the Luna Rossa parking entrance, and on the right the road continues toward Atrani.",
+        "alt": "Luna Rossa parking entrance and road toward Atrani"
       },
       "13": {
-        "caption": "You've reached the famous Atrani tunnel portal — 'Il Portale di Atrani'. Walk through the tunnel to enter Atrani.",
-        "alt": "The grand stone archway of Il Portale di Atrani"
+        "caption": "Keep walking straight along the road. You\u2019re heading toward Atrani now.",
+        "alt": "Il Portale di Atrani \u2014 the grand stone archway entrance to Atrani"
       }
     },
     "seg-b": {
       "01": {
-        "caption": "Exiting the tunnel area, you'll see a restaurant terrace (Zaccaria) on the right and another short tunnel ahead. Keep going straight.",
-        "alt": "Tunnel exit with Zaccaria restaurant terrace and sea view"
+        "caption": "You\u2019re in Atrani! Right before the next tunnel, turn right and walk through the restaurant area. You\u2019ll see Zaccaria Ristorante on your right.",
+        "alt": "Zaccaria Ristorante with tunnel on left and sea view terrace on right"
       },
       "02": {
-        "caption": "Continue past the restaurant area. Follow the road as it leads into Atrani.",
-        "alt": "Road leading into Atrani past the waterfront restaurants"
+        "caption": "Walk through the restaurant terrace \u2014 almost everyone takes this path. It\u2019s a beautiful spot on the cliff with amazing sea views. Keep going and start heading down the stairs.",
+        "alt": "Clifftop restaurant terrace with panoramic sea and mountain views"
       },
       "03": {
-        "caption": "Walk along the Atrani waterfront. You'll see colorful buildings and the piazza ahead.",
-        "alt": "Atrani waterfront with colorful buildings"
+        "caption": "Descend the stairs \u2014 it\u2019s just about two floors down.",
+        "alt": "View from above showing stairs descending toward the coastal road"
       },
       "04": {
-        "caption": "Continue through the Atrani waterfront area. Keep following the main path.",
-        "alt": "Atrani seaside area with buildings and sea"
+        "caption": "Keep following the road as it takes you gently downhill.",
+        "alt": "Coastal road with parked cars and sea view in Atrani"
       },
       "05": {
-        "caption": "You're in the heart of Atrani now. Follow the path through the village.",
-        "alt": "Central Atrani village area"
+        "caption": "You\u2019re practically in Atrani now. Just keep walking along the road.",
+        "alt": "Panoramic view of Atrani from the coastal road with cliffs and turquoise sea"
       },
       "06": {
-        "caption": "Continue along the street. Look for the narrow passages leading uphill.",
-        "alt": "Atrani street with traditional buildings"
+        "caption": "Walk down to the parking area and continue straight ahead. Head into the first arch you see.",
+        "alt": "Atrani parking area with arched passages and sea view"
       },
       "07": {
-        "caption": "Enter the narrow streets of the old village. The path leads through arched passages.",
-        "alt": "Narrow Atrani street with arched passages"
+        "caption": "In the first arch, you\u2019ll find a tunnel passage. Walk straight through it.",
+        "alt": "Large brick arched passages in old Atrani"
       },
       "08": {
-        "caption": "Follow the path through the covered passage. Stay on the main walkway.",
-        "alt": "Covered passage in Atrani village"
+        "caption": "Walk through the tunnel and continue straight.",
+        "alt": "Beautiful brick archway portico in Atrani with cobblestone path"
       },
       "09": {
-        "caption": "Continue through the village streets. The path winds between traditional buildings.",
-        "alt": "Winding village street between old buildings"
+        "caption": "As you exit, you\u2019ll see the main church of Atrani \u2014 San Salvatore de\u2019 Birecto \u2014 with its clock tower and town hall. Great photo spot! The town square is to the right, caf\u00e9s and restaurants to the left.",
+        "alt": "San Salvatore de\u2019 Birecto church with clock tower in Atrani"
       },
       "10": {
-        "caption": "Keep following the narrow path. You'll see stairs coming up.",
-        "alt": "Narrow village path with stairs ahead"
+        "caption": "Go straight into the next tunnel passage. You\u2019ll see shops on the left and a fish shop on the right. Keep walking straight through.",
+        "alt": "Arched tunnel passage in Atrani with lantern and bar sign"
       },
       "11": {
-        "caption": "Take the stairs upward. Hold onto the railing if available.",
-        "alt": "Stone stairs in the Atrani village"
+        "caption": "Walk until you reach the large inscription on the wall. Continue slightly uphill \u2014 you\u2019re only about 50 meters away now.",
+        "alt": "Atrani street with a large literary inscription on the wall"
       },
       "12": {
-        "caption": "Continue climbing the stairs through the village.",
-        "alt": "Stairs leading upward through old buildings"
+        "caption": "Your next landmark is Ristorante A\u2019 Paranza. Don\u2019t be surprised \u2014 it\u2019s one of the most exclusive and delicious restaurants in town. Just keep walking straight past it.",
+        "alt": "A\u2019 Paranza restaurant sign on a quiet Atrani street"
       },
       "13": {
-        "caption": "Almost there! Keep following the path upward.",
-        "alt": "Upper village path near the destination"
+        "caption": "Continue just a bit further past the restaurant.",
+        "alt": "Quiet Atrani street with traditional buildings and mountains"
       },
       "14": {
-        "caption": "You're very close now. Continue along the path.",
-        "alt": "Village path approaching Greg's House"
+        "caption": "Look for the fruit shop \u2014 it may be open with fruit displayed outside, or closed with brown doors. Right past it you\u2019ll see a small green door and immediately a very narrow turn to the right. Don\u2019t miss it!",
+        "alt": "Atrani street with fruit shop and narrow passage ahead"
       },
       "15": {
-        "caption": "Follow the narrow street. Look for the courtyard entrance ahead.",
-        "alt": "Narrow street leading to the house area"
+        "caption": "Here\u2019s the very narrow turn to the right \u2014 you must go in here! If the Amalfi Porters drop you off, you\u2019ll be right across from the fruit shop. This is exactly where you need to turn.",
+        "alt": "Very narrow archway entrance with stairs and green door"
       },
       "16": {
-        "caption": "Continue along the path. The house is in this area.",
-        "alt": "Street in the upper village near the house"
+        "caption": "Enter the small gallery tunnel. You\u2019ll see a green door ahead \u2014 turn right immediately from it.",
+        "alt": "Narrow tunnel passage with green door and right turn"
       },
       "17": {
-        "caption": "You're in the right neighborhood. Keep going just a bit further.",
-        "alt": "Neighborhood area near Greg's House"
+        "caption": "Walk through this narrow tunnel toward the light at the end.",
+        "alt": "Narrow Via del Tempio tunnel with light at the end"
       },
       "18": {
-        "caption": "Almost at the door! Follow the path to the courtyard.",
-        "alt": "Approaching the courtyard entrance"
+        "caption": "Right in front of you are about 10 steps. Climb up \u2014 there\u2019s a green door on the left.",
+        "alt": "Stone steps leading up with green door and Comune di Atrani marking"
       },
       "19": {
-        "caption": "You can see the courtyard entrance. Head straight to it.",
-        "alt": "Courtyard entrance visible ahead"
+        "caption": "This is the view after you climb the steps \u2014 you\u2019re right at our house!",
+        "alt": "Small courtyard at Traversa Dragone in Atrani with plants"
       },
       "20": {
-        "caption": "This is Greg's House! Welcome. Look for the green door and the courtyard with plants.",
-        "alt": "Greg's House courtyard with green door and plants"
+        "caption": "Walk to the green door. You\u2019ll see a doorbell on the left \u2014 press it and we\u2019ll come meet you right away. Welcome, you\u2019ve arrived!",
+        "alt": "Green entrance door of Greg\u2019s House with doorbell in a stone passage"
       }
     },
     "seg-b-alt": {
