@@ -1,0 +1,218 @@
+{
+  "common": {
+    "step": "Schritt",
+    "of": "von",
+    "next": "Weiter",
+    "prev": "Zurück",
+    "back": "← Zurück",
+    "download_pdf": "PDF",
+    "offline_ready": "✓ Bereit für die Offline-Nutzung!",
+    "downloading": "Anleitung wird für die Offline-Nutzung heruntergeladen…",
+    "tldr_label": "Kurzübersicht",
+    "choose_start": "Wo kommst du her?",
+    "from_amalfi": "Von Amalfi",
+    "from_atrani": "Von Atrani",
+    "now_in_atrani": "Du betrittst jetzt Atrani",
+    "entering_tunnel_route": "Weiter durch das Dorf"
+  },
+  "house": {
+    "title": "Greg's House finden",
+    "subtitle": "Schritt-für-Schritt-Wegbeschreibung",
+    "tldr": "15 Minuten Fußweg von Amalfi. Folge der Küstenstraße durch den Tunnel nach Atrani und geh dann durch die charmanten Gassen hinauf zum Haus.",
+    "time_amalfi": "~15 Min. zu Fuß · 33 Schritte",
+    "time_atrani": "~8 Min. zu Fuß · 21 Schritte",
+    "arrived": "Willkommen bei Greg's House!"
+  },
+  "awesome": {
+    "title": "Den Treffpunkt finden",
+    "subtitle": "Schritt-für-Schritt-Wegbeschreibung",
+    "tldr": "Geh von Amalfi durch den Küstentunnel nach Atrani. Der Treffpunkt liegt direkt hinter dem Tunnelausgang im Zentrum von Atrani.",
+    "time_amalfi": "~12 Min. zu Fuß · 15 Schritte",
+    "from_atrani_title": "Von Atrani",
+    "from_atrani_desc": "Der Treffpunkt ist direkt am Tunnelausgang in Atrani. Wenn du schon in Atrani bist, ist es nur ein kurzer Fußweg.",
+    "arrived": "Du hast den Treffpunkt erreicht!"
+  },
+  "routes": {
+    "amalfi_house": "Amalfi → Greg's House",
+    "atrani_house": "Atrani → Greg's House",
+    "amalfi_awesome": "Amalfi → Treffpunkt"
+  },
+  "steps": {
+    "seg-a": {
+      "01": {
+        "caption": "Starte an der Hafenpromenade von Amalfi. Du siehst das Schild 'imbarco / boarding', das zum Fähranleger zeigt. Geh die Uferpromenade entlang, das Meer rechts von dir.",
+        "alt": "Hafenpromenade von Amalfi mit Imbarco-Schild und Meerblick"
+      },
+      "02": {
+        "caption": "Folge der Küstenstraße Richtung Osten. Halte das Meer auf deiner rechten Seite.",
+        "alt": "Küstenstraße aus Amalfi heraus mit Meerblick"
+      },
+      "03": {
+        "caption": "Folge der Straße, die sich an der Küste entlangschlängelt. Links siehst du die Berge aufragen.",
+        "alt": "Geschwungene Küstenstraße mit Bergblick"
+      },
+      "04": {
+        "caption": "Geh weiter die Promenade entlang. Die Straße ist gut befestigt und leicht zu finden.",
+        "alt": "Uferpromenade Richtung Atrani"
+      },
+      "05": {
+        "caption": "Geh einfach geradeaus weiter. Du bist auf der Hauptstraße zwischen Amalfi und Atrani.",
+        "alt": "Hauptstraße zwischen Amalfi und Atrani"
+      },
+      "06": {
+        "caption": "Die Straße führt weiter an der Küste entlang. Achte auf den Tunneleingang, der gleich kommt.",
+        "alt": "Küstenstraße in der Nähe des Tunnelbereichs"
+      },
+      "07": {
+        "caption": "Du siehst, wie die Straße schmaler wird, wenn du dich dem Tunnel näherst.",
+        "alt": "Enger werdende Straße nahe dem Tunnelzugang"
+      },
+      "08": {
+        "caption": "Folge weiter der Hauptstraße. Benutze den Bürgersteig, wo vorhanden.",
+        "alt": "Straße mit Bürgersteig Richtung Atrani"
+      },
+      "09": {
+        "caption": "Geh weiter geradeaus. Der Tunneleingang von Atrani kommt immer näher.",
+        "alt": "Straße in Richtung Atrani-Tunnel"
+      },
+      "10": {
+        "caption": "Du bist fast am Tunnel. Folge der Straße einfach weiter geradeaus.",
+        "alt": "Letztes Stück vor dem Atrani-Tunnel"
+      },
+      "11": {
+        "caption": "Du kannst den Tunneleingang jetzt vor dir sehen.",
+        "alt": "Annäherung an den großen Tunneleingang von Atrani"
+      },
+      "12": {
+        "caption": "Der Tunneleingang ist direkt vor dir. Geh einfach weiter geradeaus.",
+        "alt": "In der Nähe des Atrani-Tunnelportals"
+      },
+      "13": {
+        "caption": "Du hast das berühmte Tunnelportal erreicht — 'Il Portale di Atrani'. Geh durch den Tunnel, um nach Atrani zu gelangen.",
+        "alt": "Der große Steinbogen von Il Portale di Atrani"
+      }
+    },
+    "seg-b": {
+      "01": {
+        "caption": "Am Tunnelausgang siehst du rechts eine Restaurantterrasse (Zaccaria) und einen weiteren kurzen Tunnel voraus. Geh einfach geradeaus weiter.",
+        "alt": "Tunnelausgang mit Restaurantterrasse Zaccaria und Meerblick"
+      },
+      "02": {
+        "caption": "Geh an den Restaurants vorbei. Folge der Straße nach Atrani hinein.",
+        "alt": "Straße nach Atrani, vorbei an den Restaurants am Wasser"
+      },
+      "03": {
+        "caption": "Geh an der Uferpromenade von Atrani entlang. Du siehst bunte Gebäude und die Piazza vor dir.",
+        "alt": "Uferpromenade von Atrani mit bunten Gebäuden"
+      },
+      "04": {
+        "caption": "Weiter entlang der Uferpromenade von Atrani. Folge dem Hauptweg.",
+        "alt": "Atrani am Meer mit Gebäuden und Meerblick"
+      },
+      "05": {
+        "caption": "Du bist jetzt im Herzen von Atrani. Folge dem Weg durch das Dorf.",
+        "alt": "Zentraler Dorfbereich von Atrani"
+      },
+      "06": {
+        "caption": "Geh weiter die Straße entlang. Achte auf die engen Gassen, die bergauf führen.",
+        "alt": "Straße in Atrani mit traditionellen Gebäuden"
+      },
+      "07": {
+        "caption": "Betritt die engen Gassen der Altstadt. Der Weg führt durch gewölbte Durchgänge.",
+        "alt": "Enge Gasse in Atrani mit Bogendurchgängen"
+      },
+      "08": {
+        "caption": "Folge dem Weg durch den überdachten Durchgang. Bleib auf dem Hauptweg.",
+        "alt": "Überdachter Durchgang im Dorf Atrani"
+      },
+      "09": {
+        "caption": "Weiter durch die Dorfgassen. Der Weg schlängelt sich zwischen traditionellen Gebäuden hindurch.",
+        "alt": "Gewundene Dorfgasse zwischen alten Gebäuden"
+      },
+      "10": {
+        "caption": "Folge weiter dem schmalen Weg. Gleich kommen Treppen.",
+        "alt": "Schmaler Dorfweg mit Treppen voraus"
+      },
+      "11": {
+        "caption": "Geh die Treppen hinauf. Halt dich am Geländer fest, wenn eins da ist.",
+        "alt": "Steintreppen im Dorf Atrani"
+      },
+      "12": {
+        "caption": "Steig weiter die Treppen durch das Dorf hinauf.",
+        "alt": "Treppen, die zwischen alten Gebäuden hinaufführen"
+      },
+      "13": {
+        "caption": "Fast geschafft! Folge dem Weg weiter nach oben.",
+        "alt": "Oberer Dorfweg nahe dem Ziel"
+      },
+      "14": {
+        "caption": "Du bist ganz nah dran. Geh einfach weiter.",
+        "alt": "Dorfweg in der Nähe von Greg's House"
+      },
+      "15": {
+        "caption": "Folge der schmalen Gasse. Achte auf den Hofeingang etwas weiter vorne.",
+        "alt": "Enge Gasse zum Bereich des Hauses"
+      },
+      "16": {
+        "caption": "Geh weiter den Weg entlang. Das Haus ist hier in der Nähe.",
+        "alt": "Straße im oberen Dorf nahe dem Haus"
+      },
+      "17": {
+        "caption": "Du bist in der richtigen Gegend. Nur noch ein kleines Stückchen weiter.",
+        "alt": "Nachbarschaft nahe Greg's House"
+      },
+      "18": {
+        "caption": "Fast an der Tür! Folge dem Weg zum Innenhof.",
+        "alt": "Annäherung an den Hofeingang"
+      },
+      "19": {
+        "caption": "Du kannst den Hofeingang sehen. Geh direkt darauf zu.",
+        "alt": "Hofeingang vor dir sichtbar"
+      },
+      "20": {
+        "caption": "Das ist Greg's House! Willkommen. Achte auf die grüne Tür und den Innenhof mit Pflanzen.",
+        "alt": "Innenhof von Greg's House mit grüner Tür und Pflanzen"
+      }
+    },
+    "seg-b-alt": {
+      "01": {
+        "caption": "Starte an der Bushaltestelle in Atrani auf dem Hauptplatz. Du siehst das Wartehäuschen mit den Bergen dahinter.",
+        "alt": "Bushaltestelle Atrani und Hauptplatz mit Bergkulisse"
+      },
+      "02": {
+        "caption": "Von der Bushaltestelle aus geh Richtung Dorfzentrum. Folge der Straße bergab.",
+        "alt": "Straße von der Bushaltestelle Richtung Atrani-Zentrum"
+      },
+      "03": {
+        "caption": "Geh weiter die Straße entlang. Du siehst die Dorfgebäude vor dir.",
+        "alt": "Straße Richtung Zentrum von Atrani"
+      },
+      "04": {
+        "caption": "Folge der Hauptstraße. Achte auf die Abzweigung ins Dorf.",
+        "alt": "Hauptstraße durch Atrani nahe dem Dorfeingang"
+      },
+      "05": {
+        "caption": "Folge der Straße in die Dorfgassen hinein.",
+        "alt": "Straße, die in die engen Gassen von Atrani führt"
+      },
+      "06": {
+        "caption": "Betritt die Dorfgassen. Der Weg wird hier enger.",
+        "alt": "Enger Dorfeingang von der Bushaltestelle aus"
+      },
+      "07": {
+        "caption": "Geh weiter durch die engen Gassen. Von hier aus erreichst du den Hauptweg zum Haus.",
+        "alt": "Enge Gasse mit Anschluss an den Hauptweg durch Atrani"
+      }
+    },
+    "seg-c": {
+      "01": {
+        "caption": "Am Tunnelausgang siehst du die Straße nach Atrani mit Wegweisern voraus.",
+        "alt": "Tunnelausgang Atrani mit Straßenschildern und Blick auf den Ort"
+      },
+      "02": {
+        "caption": "Das ist der Treffpunkt! Du bist da. Halt nach Greg Ausschau.",
+        "alt": "Der Treffpunkt im Zentrum von Atrani"
+      }
+    }
+  }
+}

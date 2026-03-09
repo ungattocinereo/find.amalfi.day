@@ -1,0 +1,24 @@
+{
+  "seg-a": {
+    "source_dir": "001-From-Amalfi-to-Atrani",
+    "files": ["041", "040", "039", "038", "037", "036", "035", "034", "033", "032", "031", "030", "028"]
+  },
+  "seg-b": {
+    "source_dir": "00a-Atrani-tunnel-to-the-house",
+    "files": ["027", "026", "025", "024", "023", "022", "014", "013", "012", "011", "010", "009", "008", "007", "006", "005", "004", "003", "002", "001"]
+  },
+  "seg-b-alt": {
+    "source_dir": "00b-Atrani-bus-stop-to-the-house",
+    "files": ["001", "002", "003", "004", "005", "006", "007"]
+  },
+  "seg-c": {
+    "source_dir": "01a-Atrani-to-the-meeting",
+    "files": ["002", "001"]
+  },
+  "hero": {
+    "sources": [
+      { "segment": "seg-a", "file": "041", "output": "amalfi-harbor" },
+      { "segment": "seg-a", "file": "028", "output": "atrani-tunnel" }
+    ]
+  }
+}

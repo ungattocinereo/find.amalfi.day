@@ -1,0 +1,218 @@
+{
+  "common": {
+    "step": "Passo",
+    "of": "di",
+    "next": "Avanti",
+    "prev": "Indietro",
+    "back": "← Indietro",
+    "download_pdf": "PDF",
+    "offline_ready": "✓ Pronto per l'uso offline!",
+    "downloading": "Download della guida per l'uso offline…",
+    "tldr_label": "Riepilogo rapido",
+    "choose_start": "Da dove stai arrivando?",
+    "from_amalfi": "Da Amalfi",
+    "from_atrani": "Da Atrani",
+    "now_in_atrani": "Stai entrando ad Atrani",
+    "entering_tunnel_route": "Continua attraverso il paese"
+  },
+  "house": {
+    "title": "Come trovare Greg's House",
+    "subtitle": "Guida passo passo a piedi",
+    "tldr": "15 minuti a piedi da Amalfi. Segui la strada costiera attraverso il tunnel fino ad Atrani, poi percorri le stradine del centro fino alla casa.",
+    "time_amalfi": "~15 min a piedi · 33 passi",
+    "time_atrani": "~8 min a piedi · 21 passi",
+    "arrived": "Benvenuto a Greg's House!"
+  },
+  "awesome": {
+    "title": "Come trovare il punto d'incontro",
+    "subtitle": "Guida passo passo a piedi",
+    "tldr": "Cammina da Amalfi attraverso il tunnel costiero fino ad Atrani. Il punto d'incontro si trova subito dopo l'uscita del tunnel, nel centro di Atrani.",
+    "time_amalfi": "~12 min a piedi · 15 passi",
+    "from_atrani_title": "Da Atrani",
+    "from_atrani_desc": "Il punto d'incontro è proprio all'uscita del tunnel ad Atrani. Se sei già ad Atrani, è a pochi passi.",
+    "arrived": "Hai raggiunto il punto d'incontro!"
+  },
+  "routes": {
+    "amalfi_house": "Amalfi → Greg's House",
+    "atrani_house": "Atrani → Greg's House",
+    "amalfi_awesome": "Amalfi → Punto d'incontro"
+  },
+  "steps": {
+    "seg-a": {
+      "01": {
+        "caption": "Parti dalla passeggiata del porto di Amalfi. Vedrai il cartello 'imbarco / boarding' che indica il molo dei traghetti. Cammina lungo il lungomare con il mare alla tua destra.",
+        "alt": "Passeggiata del porto di Amalfi con cartello imbarco e vista sul mare"
+      },
+      "02": {
+        "caption": "Continua lungo la strada costiera in direzione est. Tieni il mare alla tua destra.",
+        "alt": "Strada costiera in uscita da Amalfi con vista sul mare"
+      },
+      "03": {
+        "caption": "Segui la strada che curva lungo la costa. Vedrai le montagne che si innalzano alla tua sinistra.",
+        "alt": "Strada costiera in curva con vista sulle montagne"
+      },
+      "04": {
+        "caption": "Continua a camminare lungo la passeggiata. La strada è ben asfaltata e facile da seguire.",
+        "alt": "Passeggiata sul mare in direzione Atrani"
+      },
+      "05": {
+        "caption": "Prosegui dritto. Sei sulla strada principale che collega Amalfi ad Atrani.",
+        "alt": "Strada principale tra Amalfi e Atrani"
+      },
+      "06": {
+        "caption": "La strada prosegue lungo la costa. Fai attenzione all'ingresso del tunnel che si avvicina.",
+        "alt": "Strada costiera in avvicinamento alla zona del tunnel"
+      },
+      "07": {
+        "caption": "Vedrai la strada restringersi man mano che ti avvicini al tunnel.",
+        "alt": "Strada che si restringe vicino all'ingresso del tunnel"
+      },
+      "08": {
+        "caption": "Continua a seguire la strada principale. Cammina sul marciapiede dove disponibile.",
+        "alt": "Strada con marciapiede in avvicinamento ad Atrani"
+      },
+      "09": {
+        "caption": "Prosegui lungo la strada. L'ingresso del tunnel di Atrani è sempre più vicino.",
+        "alt": "Strada in avvicinamento al tunnel di Atrani"
+      },
+      "10": {
+        "caption": "Sei quasi al tunnel. Continua a seguire la strada dritto.",
+        "alt": "Ultimo tratto prima del tunnel di Atrani"
+      },
+      "11": {
+        "caption": "Puoi già vedere l'ingresso del tunnel davanti a te.",
+        "alt": "In avvicinamento al grande ingresso del tunnel di Atrani"
+      },
+      "12": {
+        "caption": "L'ingresso del tunnel è proprio lì davanti. Continua dritto.",
+        "alt": "Vicino al portale del tunnel di Atrani"
+      },
+      "13": {
+        "caption": "Hai raggiunto il famoso portale di Atrani — 'Il Portale di Atrani'. Attraversa il tunnel per entrare ad Atrani.",
+        "alt": "Il grande arco in pietra de Il Portale di Atrani"
+      }
+    },
+    "seg-b": {
+      "01": {
+        "caption": "Uscendo dal tunnel, vedrai la terrazza di un ristorante (Zaccaria) sulla destra e un altro breve tunnel davanti. Continua dritto.",
+        "alt": "Uscita del tunnel con terrazza del ristorante Zaccaria e vista sul mare"
+      },
+      "02": {
+        "caption": "Oltrepassa la zona dei ristoranti. Segui la strada che porta ad Atrani.",
+        "alt": "Strada verso Atrani oltre i ristoranti sul lungomare"
+      },
+      "03": {
+        "caption": "Cammina lungo il lungomare di Atrani. Vedrai edifici colorati e la piazza davanti a te.",
+        "alt": "Lungomare di Atrani con edifici colorati"
+      },
+      "04": {
+        "caption": "Continua lungo il lungomare di Atrani. Segui il percorso principale.",
+        "alt": "Zona sul mare di Atrani con edifici e mare"
+      },
+      "05": {
+        "caption": "Sei nel cuore di Atrani. Segui il sentiero attraverso il paese.",
+        "alt": "Centro del paese di Atrani"
+      },
+      "06": {
+        "caption": "Continua lungo la strada. Cerca i vicoli stretti che salgono in salita.",
+        "alt": "Strada di Atrani con edifici tradizionali"
+      },
+      "07": {
+        "caption": "Entra nelle stradine del centro storico. Il percorso passa sotto archi e voltoni.",
+        "alt": "Stradina stretta di Atrani con passaggi ad arco"
+      },
+      "08": {
+        "caption": "Segui il percorso attraverso il passaggio coperto. Resta sul sentiero principale.",
+        "alt": "Passaggio coperto nel paese di Atrani"
+      },
+      "09": {
+        "caption": "Continua tra le stradine del paese. Il percorso si snoda tra edifici tradizionali.",
+        "alt": "Stradina tortuosa tra vecchi edifici"
+      },
+      "10": {
+        "caption": "Continua a seguire il sentiero stretto. Tra poco ci saranno delle scale.",
+        "alt": "Sentiero stretto nel paese con scale in vista"
+      },
+      "11": {
+        "caption": "Sali le scale. Tieniti al corrimano se c'è.",
+        "alt": "Scale in pietra nel paese di Atrani"
+      },
+      "12": {
+        "caption": "Continua a salire le scale attraverso il paese.",
+        "alt": "Scale che salgono tra vecchi edifici"
+      },
+      "13": {
+        "caption": "Ci sei quasi! Continua a seguire il percorso verso l'alto.",
+        "alt": "Percorso nella parte alta del paese vicino alla destinazione"
+      },
+      "14": {
+        "caption": "Sei vicinissimo. Continua lungo il sentiero.",
+        "alt": "Sentiero nel paese in avvicinamento a Greg's House"
+      },
+      "15": {
+        "caption": "Segui la stradina. Cerca l'ingresso del cortile più avanti.",
+        "alt": "Stradina stretta verso la zona della casa"
+      },
+      "16": {
+        "caption": "Prosegui lungo il percorso. La casa è in questa zona.",
+        "alt": "Strada nella parte alta del paese vicino alla casa"
+      },
+      "17": {
+        "caption": "Sei nel quartiere giusto. Continua ancora un pochino.",
+        "alt": "Zona vicino a Greg's House"
+      },
+      "18": {
+        "caption": "Quasi alla porta! Segui il percorso verso il cortile.",
+        "alt": "In avvicinamento all'ingresso del cortile"
+      },
+      "19": {
+        "caption": "Puoi vedere l'ingresso del cortile. Vai dritto verso di esso.",
+        "alt": "Ingresso del cortile visibile davanti"
+      },
+      "20": {
+        "caption": "Questa è Greg's House! Benvenuto. Cerca la porta verde e il cortile con le piante.",
+        "alt": "Cortile di Greg's House con porta verde e piante"
+      }
+    },
+    "seg-b-alt": {
+      "01": {
+        "caption": "Parti dalla fermata dell'autobus di Atrani nella piazza principale. Vedrai la pensilina con le montagne sullo sfondo.",
+        "alt": "Fermata dell'autobus di Atrani e piazza principale con montagne sullo sfondo"
+      },
+      "02": {
+        "caption": "Dalla fermata, dirigiti verso il centro del paese. Segui la strada in discesa.",
+        "alt": "Strada dalla fermata verso il centro di Atrani"
+      },
+      "03": {
+        "caption": "Continua lungo la strada. Vedrai gli edifici del paese davanti a te.",
+        "alt": "Strada in avvicinamento al centro di Atrani"
+      },
+      "04": {
+        "caption": "Continua a camminare lungo la strada principale. Cerca la svolta per entrare nel paese.",
+        "alt": "Strada principale di Atrani vicino all'ingresso del paese"
+      },
+      "05": {
+        "caption": "Segui la strada che porta nelle vie del paese.",
+        "alt": "Strada che porta nelle stradine di Atrani"
+      },
+      "06": {
+        "caption": "Entra nelle vie del paese. Il percorso diventa più stretto qui.",
+        "alt": "Ingresso stretto nel paese dalla direzione della fermata"
+      },
+      "07": {
+        "caption": "Continua nelle stradine. Da qui ti collegherai al percorso principale verso la casa.",
+        "alt": "Stradina che si collega al percorso principale attraverso Atrani"
+      }
+    },
+    "seg-c": {
+      "01": {
+        "caption": "All'uscita del tunnel vedrai la strada che porta ad Atrani con i cartelli stradali davanti.",
+        "alt": "Uscita del tunnel di Atrani con cartelli stradali e vista sul paese"
+      },
+      "02": {
+        "caption": "Questo è il punto d'incontro! Sei arrivato. Cerca Greg nei dintorni.",
+        "alt": "Il punto d'incontro nel centro di Atrani"
+      }
+    }
+  }
+}

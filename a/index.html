@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#FF5900">
+  <meta name="description" content="Step-by-step walking guide to the Meeting Point on the Amalfi Coast. Works offline.">
+  <title>Finding the Meeting Point | find.amalfi.day</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Find Greg's">
+  <script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-image">
+      <picture>
+        <source srcset="/img/hero/atrani-tunnel.webp" type="image/webp">
+        <img src="/img/hero/atrani-tunnel.jpg" alt="The Atrani tunnel portal" width="1200" height="805" fetchpriority="high">
+      </picture>
+    </div>
+    <div class="hero-scrim"></div>
+    <div class="lang-bar">
+      <span class="lang-globe"><i data-lucide="globe"></i></span>
+      <nav class="lang-switcher" aria-label="Language">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="it">IT</button>
+        <button class="lang-btn" data-lang="de">DE</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+      </nav>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title" data-i18n="awesome.title">Finding the Meeting Point</h1>
+      <p class="hero-subtitle" data-i18n="awesome.subtitle">Step-by-step walking guide</p>
+    </div>
+  </section>
+
+  <main class="landing-body">
+    <div class="tldr">
+      <div class="tldr-label"><i data-lucide="info"></i> <span data-i18n="common.tldr_label">Quick Summary</span></div>
+      <p class="tldr-text" data-i18n="awesome.tldr">Walk from Amalfi through the coastal tunnel to Atrani. The meeting point is just past the tunnel exit at the Atrani center.</p>
+    </div>
+
+    <h2 class="route-select-title" data-i18n="common.choose_start">Where are you coming from?</h2>
+
+    <div class="route-cards">
+      <a href="/route/amalfi-awesome.html" class="route-card">
+        <span class="route-card-icon"><i data-lucide="ship"></i></span>
+        <div class="route-card-content">
+          <span class="route-card-from" data-i18n="common.from_amalfi">From Amalfi</span>
+          <span class="route-card-time"><i data-lucide="footprints"></i> <span data-i18n="awesome.time_amalfi">~12 min walk &middot; 15 steps</span></span>
+        </div>
+        <span class="route-card-arrow" aria-hidden="true"><i data-lucide="chevron-right"></i></span>
+      </a>
+    </div>
+
+    <!-- Atrani -> Meeting Point: inline (only 2 steps) -->
+    <section class="inline-route">
+      <h3 class="inline-route-title" data-i18n="awesome.from_atrani_title">From Atrani</h3>
+      <p class="inline-route-desc" data-i18n="awesome.from_atrani_desc">The meeting point is right at the tunnel exit in Atrani. If you're already in Atrani, it's just a short walk.</p>
+      <div class="inline-route-photos">
+        <div class="inline-route-photo">
+          <picture>
+            <source srcset="/img/seg-c/01.webp" type="image/webp">
+            <img src="/img/seg-c/01.jpg" alt="View from the tunnel into Atrani center" loading="lazy" width="800" height="537">
+          </picture>
+          <p class="inline-route-caption" data-i18n="steps.seg-c.01.caption">At the tunnel exit, you'll see the road leading into Atrani with directional signs ahead.</p>
+        </div>
+        <div class="inline-route-photo">
+          <picture>
+            <source srcset="/img/seg-c/02.webp" type="image/webp">
+            <img src="/img/seg-c/02.jpg" alt="The meeting point in Atrani" loading="lazy" width="800" height="537">
+          </picture>
+          <p class="inline-route-caption" data-i18n="steps.seg-c.02.caption">This is the meeting point. You've arrived!</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="offline-banner" id="offline-banner">
+      <span id="offline-text"></span>
+      <div class="download-progress" id="download-progress" style="display:none;">
+        <div class="download-progress-fill" id="download-progress-fill"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="landing-footer">
+    <a href="https://amalfi.day">Powered by amalfi.day</a>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>

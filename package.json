@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "name": "find-amalfi-day",
+  "description": "Guest Navigation PWA for Amalfi Coast",
+  "scripts": {
+    "images": "node scripts/process-images.mjs",
+    "dev": "npx serve . -p 3000"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.0"
+  }
+}
