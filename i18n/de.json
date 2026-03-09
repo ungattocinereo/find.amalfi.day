@@ -14,7 +14,8 @@
     "from_atrani": "Von Atrani",
     "now_in_atrani": "Du betrittst jetzt Atrani",
     "entering_tunnel_route": "Weiter durch das Dorf",
-    "save_hint": "Anleitung speichern: <strong>Teilen</strong> → <strong>Zum Home-Bildschirm</strong>"
+    "save_title": "Für Offline-Nutzung speichern",
+    "save_hint": "Das Mobilfunksignal ist auf der Strecke wegen der Berge schwach. Tippe auf <strong>Teilen</strong> → <strong>Zum Home-Bildschirm</strong>, um die Anleitung auf dem Handy zu speichern."
   },
   "house": {
     "title": "Greg's House finden",
