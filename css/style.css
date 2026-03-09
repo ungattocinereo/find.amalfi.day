@@ -137,6 +137,12 @@ button {
   overflow: hidden;
 }
 
+.hero--full {
+  min-height: 100vh;
+  min-height: 100dvh;
+  justify-content: center;
+}
+
 .hero-image {
   position: absolute;
   inset: 0;
@@ -148,6 +154,11 @@ button {
   height: 100%;
   object-fit: cover;
   object-position: center 30%;
+}
+
+.hero-image--blur img {
+  filter: blur(3px);
+  transform: scale(1.02);
 }
 
 .hero-scrim {
@@ -163,6 +174,125 @@ button {
   );
 }
 
+.hero-scrim--full {
+  background: rgba(28, 46, 58, 0.55);
+}
+
+/* Hero centered layout (full-screen variant) */
+.hero-center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 var(--spacing-lg);
+  padding-top: calc(80px + env(safe-area-inset-top));
+  padding-bottom: var(--spacing-2xl);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: var(--spacing-md);
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 8vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #fff;
+  margin-bottom: var(--spacing-xl);
+  letter-spacing: -0.02em;
+}
+
+/* Save-to-phone hint */
+.hero-save {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  max-width: 340px;
+}
+
+.hero-save-icon {
+  flex-shrink: 0;
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+}
+
+.hero-save-icon .lucide {
+  width: 20px;
+  height: 20px;
+}
+
+.hero-save-text {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+  text-align: left;
+}
+
+.hero-save-text strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* CTA button */
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  background: var(--color-accent);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 100px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 20px rgba(255, 89, 0, 0.4);
+}
+
+.hero-cta:hover,
+.hero-cta:focus-visible {
+  background: var(--color-accent-hover);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(255, 89, 0, 0.5);
+}
+
+.hero-cta:active {
+  transform: translateY(0);
+}
+
+.hero-cta .lucide {
+  width: 18px;
+  height: 18px;
+  animation: bounceDown 2s ease-in-out infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+/* Legacy hero content (route pages still use bottom-aligned layout) */
 .hero-content {
   position: relative;
   z-index: 2;
@@ -949,7 +1079,8 @@ button {
   }
 }
 
-.hero-content {
+.hero-content,
+.hero-center {
   animation: fadeInUp 0.6s ease-out;
 }
 

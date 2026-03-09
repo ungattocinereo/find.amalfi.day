@@ -13,7 +13,8 @@
     "from_amalfi": "Depuis Amalfi",
     "from_atrani": "Depuis Atrani",
     "now_in_atrani": "Tu entres maintenant dans Atrani",
-    "entering_tunnel_route": "Continue à travers le village"
+    "entering_tunnel_route": "Continue à travers le village",
+    "save_hint": "Sauvegarder le guide : <strong>Partager</strong> → <strong>Sur l'écran d'accueil</strong>"
   },
   "house": {
     "title": "Trouver Greg's House",

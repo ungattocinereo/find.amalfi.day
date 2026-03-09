@@ -13,7 +13,8 @@
     "from_amalfi": "Da Amalfi",
     "from_atrani": "Da Atrani",
     "now_in_atrani": "Stai entrando ad Atrani",
-    "entering_tunnel_route": "Continua attraverso il paese"
+    "entering_tunnel_route": "Continua attraverso il paese",
+    "save_hint": "Salva la guida: tocca <strong>Condividi</strong> → <strong>Aggiungi a Home</strong>"
   },
   "house": {
     "title": "Come trovare Greg's House",

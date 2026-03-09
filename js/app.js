@@ -78,7 +78,13 @@
     document.querySelectorAll('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       const value = getNestedValue(translations, key);
-      if (value) el.textContent = value;
+      if (!value) return;
+      // Use innerHTML for keys that contain HTML markup (e.g. save_hint)
+      if (el.hasAttribute('data-i18n-html')) {
+        el.innerHTML = value;
+      } else {
+        el.textContent = value;
+      }
     });
 
     // Alt text

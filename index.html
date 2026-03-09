@@ -16,14 +16,14 @@
   <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
-  <section class="hero">
-    <div class="hero-image">
+  <section class="hero hero--full">
+    <div class="hero-image hero-image--blur">
       <picture>
         <source srcset="/img/hero/amalfi-harbor.webp" type="image/webp">
         <img src="/img/hero/amalfi-harbor.jpg" alt="Amalfi harbor promenade" width="1200" height="805" fetchpriority="high">
       </picture>
     </div>
-    <div class="hero-scrim"></div>
+    <div class="hero-scrim hero-scrim--full"></div>
     <div class="lang-bar">
       <span class="lang-globe"><i data-lucide="globe"></i></span>
       <nav class="lang-switcher" aria-label="Language">
@@ -33,13 +33,21 @@
         <button class="lang-btn" data-lang="fr">FR</button>
       </nav>
     </div>
-    <div class="hero-content">
-      <h1 class="hero-title" data-i18n="house.title">Finding Greg's House</h1>
-      <p class="hero-subtitle" data-i18n="house.subtitle">Step-by-step walking guide</p>
+    <div class="hero-center">
+      <p class="hero-eyebrow" data-i18n="house.subtitle">Step-by-step walking guide</p>
+      <h1 class="hero-headline" data-i18n="house.title">Finding Greg's House</h1>
+      <div class="hero-save">
+        <div class="hero-save-icon"><i data-lucide="smartphone"></i></div>
+        <p class="hero-save-text" data-i18n="common.save_hint" data-i18n-html>Save this guide: tap <strong>Share</strong> → <strong>Add to Home Screen</strong></p>
+      </div>
+      <a href="#routes" class="hero-cta">
+        <span data-i18n="common.choose_start">Choose your starting point</span>
+        <i data-lucide="chevron-down"></i>
+      </a>
     </div>
   </section>
 
-  <main class="landing-body">
+  <main class="landing-body" id="routes">
     <div class="tldr">
       <div class="tldr-label"><i data-lucide="info"></i> <span data-i18n="common.tldr_label">Quick Summary</span></div>
       <p class="tldr-text" data-i18n="house.tldr">15-minute walk from Amalfi. Follow the coastal road through the tunnel to Atrani, then navigate through the charming streets up to the house.</p>
