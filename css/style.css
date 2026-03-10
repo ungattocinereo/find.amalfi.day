@@ -843,9 +843,7 @@ button {
   display: flex;
   align-items: center;
   gap: 5px;
-  background: rgba(28, 46, 58, 0.75);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: var(--color-accent);
   color: white;
   font-weight: 600;
   font-size: 0.75rem;
@@ -858,7 +856,7 @@ button {
 .step-badge svg {
   width: 12px;
   height: 12px;
-  stroke: var(--color-accent);
+  stroke: white;
   stroke-width: 2.5;
   fill: none;
   flex-shrink: 0;
