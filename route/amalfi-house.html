@@ -533,7 +533,28 @@
     <div class="arrival-card">
       <div class="arrival-icon"><i data-lucide="home"></i></div>
       <h2 class="arrival-title" data-i18n="house.arrived">Welcome to Greg's House!</h2>
-      <p class="arrival-text">You've made it. Time to relax.</p>
+      <p class="arrival-text" data-i18n="house.arrival_text">You've made it! Please ring the doorbell on the left — we'll see you right away.</p>
+
+      <div class="arrival-wifi">
+        <div class="arrival-wifi-header">
+          <i data-lucide="wifi"></i>
+          <span>Wi-Fi</span>
+        </div>
+        <div class="arrival-wifi-details">
+          <div class="arrival-wifi-row">
+            <span class="arrival-wifi-label">Network</span>
+            <span class="arrival-wifi-value">Amalfi.Day</span>
+          </div>
+          <div class="arrival-wifi-row">
+            <span class="arrival-wifi-label">Password</span>
+            <span class="arrival-wifi-value arrival-wifi-password">Z1x2c3v4</span>
+          </div>
+        </div>
+        <button class="arrival-wifi-connect" data-copy="Z1x2c3v4">
+          <i data-lucide="clipboard-copy"></i>
+          <span data-i18n="house.wifi_copy">Copy password</span>
+        </button>
+      </div>
     </div>
   </main>
 

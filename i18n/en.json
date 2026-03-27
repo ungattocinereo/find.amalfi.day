@@ -24,7 +24,9 @@
     "porters": "Have heavy luggage? Look for <strong>Amalfi Porters</strong> \u2014 small golf carts right at the port and bus stop. For about \u20ac20 they\u2019ll drive you to the house area and can carry your bags up the ~200 steps to the apartment.",
     "time_amalfi": "~15 min walk \u00b7 33 steps",
     "time_atrani": "~8 min walk \u00b7 21 steps",
-    "arrived": "Welcome to Greg's House!"
+    "arrived": "Welcome to Greg's House!",
+    "arrival_text": "You've made it! Please ring the doorbell on the left \u2014 we'll see you right away.",
+    "wifi_copy": "Copy password"
   },
   "awesome": {
     "title": "Finding the Meeting Point",

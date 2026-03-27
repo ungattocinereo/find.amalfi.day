@@ -24,7 +24,9 @@
     "porters": "Schweres Gep\u00e4ck? Suche die <strong>Amalfi Porters</strong> \u2014 kleine Golfcarts direkt am Hafen und an der Bushaltestelle. F\u00fcr ca. \u20ac20 fahren sie dich bis zum Haus und k\u00f6nnen dein Gep\u00e4ck die ca. 200 Stufen hoch zur Wohnung tragen.",
     "time_amalfi": "~15 Min. zu Fu\u00df \u00b7 33 Schritte",
     "time_atrani": "~8 Min. zu Fu\u00df \u00b7 21 Schritte",
-    "arrived": "Willkommen bei Greg's House!"
+    "arrived": "Willkommen bei Greg's House!",
+    "arrival_text": "Geschafft! Bitte klingeln Sie links an der T\u00fcr \u2014 wir sehen Sie sofort.",
+    "wifi_copy": "Passwort kopieren"
   },
   "awesome": {
     "title": "Den Treffpunkt finden",

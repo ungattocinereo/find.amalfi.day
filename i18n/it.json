@@ -24,7 +24,9 @@
     "porters": "Hai bagagli pesanti? Cerca gli <strong>Amalfi Porters</strong> \u2014 piccoli golf cart disponibili al porto e alla fermata dell\u2019autobus. Per circa \u20ac20 ti porteranno fino alla zona della casa e possono trasportare i bagagli su per i circa 200 gradini fino all\u2019appartamento.",
     "time_amalfi": "~15 min a piedi \u00b7 33 passi",
     "time_atrani": "~8 min a piedi \u00b7 21 passi",
-    "arrived": "Benvenuto a Greg's House!"
+    "arrived": "Benvenuto a Greg's House!",
+    "arrival_text": "Ce l'hai fatta! Suona il campanello a sinistra \u2014 ti vedremo subito.",
+    "wifi_copy": "Copia password"
   },
   "awesome": {
     "title": "Come trovare il punto d'incontro",

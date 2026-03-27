@@ -931,6 +931,98 @@ button {
   line-height: 1.6;
 }
 
+/* --- Arrival Wi-Fi Card --- */
+.arrival-wifi {
+  margin-top: var(--spacing-lg);
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  text-align: left;
+}
+
+.arrival-wifi-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.arrival-wifi-header .lucide {
+  width: 16px;
+  height: 16px;
+  color: var(--color-accent);
+}
+
+.arrival-wifi-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.arrival-wifi-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrival-wifi-label {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.arrival-wifi-value {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.arrival-wifi-password {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  letter-spacing: 0.08em;
+  background: var(--color-surface);
+  padding: 2px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-light);
+}
+
+.arrival-wifi-connect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px var(--spacing-md);
+  background: var(--color-accent);
+  color: white;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.arrival-wifi-connect:hover {
+  background: var(--color-accent-hover);
+}
+
+.arrival-wifi-connect .lucide {
+  width: 18px;
+  height: 18px;
+}
+
 /* --- Route Footer (Fixed Bottom Bar) --- */
 .route-footer {
   position: fixed;

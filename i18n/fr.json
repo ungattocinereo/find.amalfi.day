@@ -24,7 +24,9 @@
     "porters": "Des bagages lourds ? Cherche les <strong>Amalfi Porters</strong> \u2014 de petites voiturettes de golf au port et \u00e0 l\u2019arr\u00eat de bus. Pour environ \u20ac20, ils te conduisent jusqu\u2019\u00e0 la maison et peuvent porter tes bagages sur les ~200 marches jusqu\u2019\u00e0 l\u2019appartement.",
     "time_amalfi": "~15 min \u00e0 pied \u00b7 33 \u00e9tapes",
     "time_atrani": "~8 min \u00e0 pied \u00b7 21 \u00e9tapes",
-    "arrived": "Bienvenue chez Greg's House !"
+    "arrived": "Bienvenue chez Greg's House !",
+    "arrival_text": "Vous \u00eates arriv\u00e9 ! Sonnez \u00e0 la porte \u00e0 gauche \u2014 nous vous verrons tout de suite.",
+    "wifi_copy": "Copier le mot de passe"
   },
   "awesome": {
     "title": "Trouver le point de rendez-vous",

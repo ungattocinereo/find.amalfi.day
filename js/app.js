@@ -319,8 +319,29 @@
     initNavigation();
     initPdfDownload();
 
+    // Init copy buttons
+    initCopyButtons();
+
     // Init offline
     initServiceWorker();
+  }
+
+  /* ========================================================================
+     Copy to Clipboard
+     ======================================================================== */
+
+  function initCopyButtons() {
+    document.querySelectorAll('[data-copy]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var text = btn.dataset.copy;
+        var span = btn.querySelector('span');
+        var original = span.textContent;
+        navigator.clipboard.writeText(text).then(function () {
+          span.textContent = 'Copied!';
+          setTimeout(function () { span.textContent = original; }, 2000);
+        });
+      });
+    });
   }
 
   if (document.readyState === 'loading') {
