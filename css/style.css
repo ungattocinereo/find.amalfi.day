@@ -794,7 +794,7 @@ button {
 
 /* --- Step Card --- */
 .step {
-  margin-bottom: var(--spacing-xl);
+  margin-bottom: var(--spacing-2xl);
   scroll-margin-top: calc(var(--header-height) + 8px);
 }
 
@@ -876,19 +876,20 @@ button {
 .step-caption {
   position: relative;
   z-index: 1;
-  font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
   font-weight: 400;
-  line-height: 1.5;
+  line-height: 1.6;
+  letter-spacing: 0.005em;
   color: var(--color-text);
   background: var(--color-surface);
   border: 1px solid var(--color-border-light);
   border-radius: var(--radius-md);
-  padding: var(--spacing-md) var(--spacing-lg);
-  margin-top: -24px;
-  margin-left: var(--spacing-sm);
-  margin-right: var(--spacing-sm);
-  box-shadow: var(--shadow-md);
+  padding: 14px 20px;
+  margin-top: -20px;
+  margin-left: var(--spacing-md);
+  margin-right: var(--spacing-md);
+  box-shadow: var(--shadow-sm);
 }
 
 /* --- Arrival Card --- */
@@ -1083,6 +1084,36 @@ button {
 .step-photo:has(img[complete]) {
   animation: none;
   background: none;
+}
+
+/* --- Responsive: Tablet & Desktop --- */
+@media (min-width: 640px) {
+  .steps {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+
+  .step-photo {
+    border-radius: 20px;
+  }
+
+  .step-caption {
+    font-size: 1rem;
+    padding: var(--spacing-md) var(--spacing-lg);
+    margin-left: var(--spacing-lg);
+    margin-right: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --max-width: 680px;
+  }
+
+  .step-caption {
+    font-size: 1.05rem;
+    padding: 18px 28px;
+  }
 }
 
 /* --- Print Styles --- */
