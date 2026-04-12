@@ -1,0 +1,14 @@
+# Source photos (~69 MB, not for deployment)
+guide-images/
+
+# Dev-only build scripts
+scripts/
+
+# Planning docs
+find-amalfi-day-plan.md
+todo-gps.md
+logic-files.md
+
+# Package files (no build step)
+package.json
+package-lock.json
