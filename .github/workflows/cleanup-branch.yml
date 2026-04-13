@@ -1,0 +1,45 @@
+name: Cleanup Vercel Deployments on Branch Delete
+
+on:
+  delete:
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+jobs:
+  cleanup:
+    if: github.event.ref_type == 'branch' && github.event.ref != 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel project info
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Remove deployments for this branch
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          BRANCH: ${{ github.event.ref }}
+        run: |
+          # List preview deployments tagged with this branch and remove each.
+          # `vercel ls` with `--meta` filters by deployment metadata we set during deploy.
+          set +e
+          OUTPUT=$(vercel ls --meta githubBranch="$BRANCH" --token=$VERCEL_TOKEN 2>&1)
+          echo "$OUTPUT"
+          # Extract deployment URLs (lines containing https://...vercel.app)
+          URLS=$(echo "$OUTPUT" | grep -oE 'https://[a-zA-Z0-9.-]+\.vercel\.app' | sort -u)
+          if [ -z "$URLS" ]; then
+            echo "No deployments found for branch $BRANCH"
+            exit 0
+          fi
+          echo "Removing the following deployments:"
+          echo "$URLS"
+          for URL in $URLS; do
+            vercel remove "$URL" --yes --token=$VERCEL_TOKEN || echo "Failed to remove $URL"
+          done

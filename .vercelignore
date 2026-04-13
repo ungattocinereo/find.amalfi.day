@@ -8,6 +8,10 @@ scripts/
 find-amalfi-day-plan.md
 todo-gps.md
 logic-files.md
+DEPLOYMENT.md
+
+# CI configuration
+.github/
 
 # Package files (no build step)
 package.json
