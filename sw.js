@@ -3,7 +3,7 @@
    Cache-first strategy with aggressive precaching
    ========================================================================== */
 
-const CACHE_VERSION = 'find-amalfi-v5';
+const CACHE_VERSION = 'find-amalfi-v6';
 
 /* --- Asset list to precache --- */
 const PRECACHE_URLS = [
@@ -14,6 +14,7 @@ const PRECACHE_URLS = [
   '/route/amalfi-awesome.html',
   '/css/style.css',
   '/js/app.js',
+  '/js/lightbox.js',
   '/i18n/en.json',
   '/i18n/it.json',
   '/i18n/de.json',

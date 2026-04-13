@@ -28,7 +28,19 @@
   <meta name="apple-mobile-web-app-title" content="Find Greg's">
   <script>document.documentElement.classList.remove('no-js');</script>
 </head>
-<body>
+<body class="landing-body-root">
+  <header class="landing-sticky-header">
+    <a href="/a/" class="landing-sticky-brand" aria-label="Home">
+      <i data-lucide="map-pin"></i>
+    </a>
+    <nav class="lang-switcher" aria-label="Language">
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="it">IT</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+    </nav>
+  </header>
+
   <section class="hero hero--full">
     <div class="hero-image hero-image--blur">
       <picture>
@@ -37,16 +49,17 @@
       </picture>
     </div>
     <div class="hero-scrim hero-scrim--full"></div>
-    <div class="lang-bar">
-      <span class="lang-globe"><i data-lucide="globe"></i></span>
-      <nav class="lang-switcher" aria-label="Language">
-        <button class="lang-btn active" data-lang="en">EN</button>
-        <button class="lang-btn" data-lang="it">IT</button>
-        <button class="lang-btn" data-lang="de">DE</button>
-        <button class="lang-btn" data-lang="fr">FR</button>
-      </nav>
-    </div>
     <div class="hero-center">
+      <div class="lang-bar lang-bar--prominent">
+        <span class="lang-globe"><i data-lucide="globe"></i></span>
+        <span class="lang-bar-label" data-i18n="common.language">Language</span>
+        <nav class="lang-switcher lang-switcher--hero" aria-label="Language">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="it">IT</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+          <button class="lang-btn" data-lang="fr">FR</button>
+        </nav>
+      </div>
       <div class="hero-card">
         <p class="hero-eyebrow" data-i18n="awesome.subtitle">Step-by-step walking guide</p>
       </div>

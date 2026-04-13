@@ -15,7 +15,22 @@
     "now_in_atrani": "Tu entres maintenant dans Atrani",
     "entering_tunnel_route": "Continue \u00e0 travers le village",
     "save_title": "Enregistrer pour une utilisation hors ligne",
-    "save_hint": "Le signal mobile est faible le long du trajet \u00e0 cause des montagnes. Appuyez sur <strong>Partager</strong> \u2192 <strong>Sur l\u2019\u00e9cran d\u2019accueil</strong> pour sauvegarder le guide sur votre t\u00e9l\u00e9phone."
+    "save_hint": "Le signal mobile est faible le long du trajet \u00e0 cause des montagnes. Appuyez sur <strong>Partager</strong> \u2192 <strong>Sur l\u2019\u00e9cran d\u2019accueil</strong> pour sauvegarder le guide sur votre t\u00e9l\u00e9phone.",
+    "language": "Langue",
+    "read_aloud": "Lire \u00e0 voix haute",
+    "toggle_auto_read": "Activer la narration automatique",
+    "steps": "\u00c9tapes",
+    "steps_drawer": "Voir toutes les \u00e9tapes",
+    "all_steps": "Toutes les \u00e9tapes"
+  },
+  "rail": {
+    "amalfi": "Amalfi",
+    "atrani": "Atrani",
+    "house": "Maison",
+    "tunnel": "Tunnel",
+    "village": "Village",
+    "meeting": "Point de RDV",
+    "bus_stop": "Arr\u00eat de bus"
   },
   "house": {
     "title": "Trouver Greg's House",

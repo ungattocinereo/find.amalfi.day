@@ -4,9 +4,13 @@
   "description": "Guest Navigation PWA for Amalfi Coast",
   "scripts": {
     "images": "node scripts/process-images.mjs",
+    "html": "node scripts/generate-html.mjs",
+    "pdf": "node scripts/generate-pdf.mjs",
+    "build": "npm run html && npm run pdf",
     "dev": "npx serve . -p 3000"
   },
   "devDependencies": {
+    "pdf-lib": "^1.17.1",
     "sharp": "^0.33.0"
   }
 }

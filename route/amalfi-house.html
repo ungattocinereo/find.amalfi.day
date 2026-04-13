@@ -26,30 +26,75 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <script>document.documentElement.classList.remove('no-js');</script>
 </head>
-<body>
-  <header class="route-header">
-    <a href="/" class="back-link"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg> <span data-i18n="common.back">Back</span></a>
-    <span class="route-name" data-i18n="routes.amalfi_house">Amalfi → Greg's House</span>
-    <nav class="lang-switcher" aria-label="Language">
-      <button class="lang-btn active" data-lang="en">EN</button>
+<body class="route-body">
+  <!-- Prominent language hero strip — visible only at top of page -->
+  <div class="lang-hero" id="lang-hero">
+    <span class="lang-hero-icon"><i data-lucide="globe"></i></span>
+    <span class="lang-hero-label" data-i18n="common.language">Language</span>
+    <nav class="lang-switcher lang-switcher--hero" aria-label="Language">
+      <button class="lang-btn" data-lang="en">EN</button>
       <button class="lang-btn" data-lang="it">IT</button>
       <button class="lang-btn" data-lang="de">DE</button>
       <button class="lang-btn" data-lang="fr">FR</button>
     </nav>
+  </div>
+  <!-- Sentinel observed by JS to detect when lang-hero has scrolled out of view -->
+  <div class="lang-hero-sentinel" aria-hidden="true"></div>
+
+  <header class="route-header">
+    <a href="/" class="back-link" aria-label="Back">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+      <span data-i18n="common.back">Back</span>
+    </a>
+    <nav class="lang-switcher" aria-label="Language">
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="it">IT</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+      <button class="lang-btn" data-lang="fr">FR</button>
+    </nav>
+    <button type="button" class="header-tts-toggle" id="tts-toggle" aria-label="Toggle auto-narration" data-i18n-aria="common.toggle_auto_read">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+    </button>
   </header>
 
-  <div class="progress-bar">
-    <div class="progress-fill" id="progress-fill"></div>
+  <div class="progress-rail" id="progress-rail" data-segments='[{"id":"amalfi","i18nKey":"rail.amalfi","label":"Amalfi","step":1},{"id":"atrani","i18nKey":"rail.atrani","label":"Atrani","step":14},{"id":"house","i18nKey":"rail.house","label":"House","step":33}]'>
+    <div class="rail-track">
+      <div class="rail-fill" id="rail-fill"></div>
+    </div>
+    <div class="rail-nodes">
+      <div class="rail-node" data-segment="amalfi" data-segment-step="1">
+        <span class="rail-node-dot"></span>
+        <span class="rail-node-label" data-i18n="rail.amalfi">Amalfi</span>
+      </div>
+      <div class="rail-node" data-segment="atrani" data-segment-step="14">
+        <span class="rail-node-dot"></span>
+        <span class="rail-node-label" data-i18n="rail.atrani">Atrani</span>
+      </div>
+      <div class="rail-node" data-segment="house" data-segment-step="33">
+        <span class="rail-node-dot"></span>
+        <span class="rail-node-label" data-i18n="rail.house">House</span>
+      </div>
+    </div>
+    <div class="rail-meta">
+      <span class="rail-meta-step"><span data-i18n="common.step">Step</span> <span id="rail-step-num">1</span> <span data-i18n="common.of">of</span> 33</span>
+      <span class="rail-meta-sep">·</span>
+      <span class="rail-meta-segment" id="rail-segment-label"></span>
+    </div>
   </div>
 
   <main class="steps" data-route="amalfi-house" data-total="33">
-      <article class="step" id="step-1">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 1 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-1" data-step="1">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 1 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.01.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="1">
           <div class="step-badge">
-            <i data-lucide="anchor"></i>
-            <span class="step-badge-location">Seaport of Amalfi</span>
-            <span class="step-badge-num">1</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>1</span>
           </div>
           <picture>
             <source srcset="/img/seg-a/01.webp" type="image/webp">
@@ -58,13 +103,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-a.01.caption"></p>
       </article>
-      <article class="step" id="step-2">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 2 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-2" data-step="2">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 2 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.02.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="2">
           <div class="step-badge">
-            <i data-lucide="anchor"></i>
-            <span class="step-badge-location">Seaport of Amalfi</span>
-            <span class="step-badge-num">2</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>2</span>
           </div>
           <picture>
             <source srcset="/img/seg-a/02.webp" type="image/webp">
@@ -73,13 +123,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-a.02.caption"></p>
       </article>
-      <article class="step" id="step-3">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 3 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-3" data-step="3">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 3 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.03.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="3">
           <div class="step-badge">
-            <i data-lucide="anchor"></i>
-            <span class="step-badge-location">Seaport of Amalfi</span>
-            <span class="step-badge-num">3</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>3</span>
           </div>
           <picture>
             <source srcset="/img/seg-a/03.webp" type="image/webp">
@@ -88,13 +143,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-a.03.caption"></p>
       </article>
-      <article class="step" id="step-4">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 4 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-4" data-step="4">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 4 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.04.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="4">
           <div class="step-badge">
-            <i data-lucide="bus"></i>
-            <span class="step-badge-location">Bus Stop of Amalfi</span>
-            <span class="step-badge-num">4</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>4</span>
           </div>
           <picture>
             <source srcset="/img/seg-a/04.webp" type="image/webp">
@@ -103,13 +163,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-a.04.caption"></p>
       </article>
-      <article class="step" id="step-5">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 5 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-5" data-step="5">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 5 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.05.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="5">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Amalfi</span>
-            <span class="step-badge-num">5</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>5</span>
           </div>
           <picture>
             <source srcset="/img/seg-a/05.webp" type="image/webp">
@@ -118,13 +183,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-a.05.caption"></p>
       </article>
-      <article class="step" id="step-6">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 6 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-6" data-step="6">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 6 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.06.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="6">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Amalfi</span>
-            <span class="step-badge-num">6</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>6</span>
           </div>
           <picture>
             <source srcset="/img/seg-a/06.webp" type="image/webp">
@@ -133,13 +203,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-a.06.caption"></p>
       </article>
-      <article class="step" id="step-7">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 7 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-7" data-step="7">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 7 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.07.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="7">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Amalfi</span>
-            <span class="step-badge-num">7</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>7</span>
           </div>
           <picture>
             <source srcset="/img/seg-a/07.webp" type="image/webp">
@@ -148,13 +223,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-a.07.caption"></p>
       </article>
-      <article class="step" id="step-8">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 8 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-8" data-step="8">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 8 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.08.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="8">
           <div class="step-badge">
-            <i data-lucide="coffee"></i>
-            <span class="step-badge-location">dejavu Caf&egrave;</span>
-            <span class="step-badge-num">8</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>8</span>
           </div>
           <picture>
             <source srcset="/img/seg-a/08.webp" type="image/webp">
@@ -163,13 +243,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-a.08.caption"></p>
       </article>
-      <article class="step" id="step-9">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 9 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-9" data-step="9">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 9 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.09.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="9">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Tunnel Amalfi-Atrani</span>
-            <span class="step-badge-num">9</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>9</span>
           </div>
           <picture>
             <source srcset="/img/seg-a/09.webp" type="image/webp">
@@ -178,13 +263,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-a.09.caption"></p>
       </article>
-      <article class="step" id="step-10">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 10 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-10" data-step="10">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 10 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.10.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="10">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Tunnel Amalfi-Atrani</span>
-            <span class="step-badge-num">10</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>10</span>
           </div>
           <picture>
             <source srcset="/img/seg-a/10.webp" type="image/webp">
@@ -193,13 +283,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-a.10.caption"></p>
       </article>
-      <article class="step" id="step-11">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 11 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-11" data-step="11">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 11 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.11.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="11">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Tunnel Amalfi-Atrani</span>
-            <span class="step-badge-num">11</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>11</span>
           </div>
           <picture>
             <source srcset="/img/seg-a/11.webp" type="image/webp">
@@ -208,13 +303,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-a.11.caption"></p>
       </article>
-      <article class="step" id="step-12">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 12 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-12" data-step="12">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 12 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.12.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="12">
           <div class="step-badge">
-            <i data-lucide="square-parking"></i>
-            <span class="step-badge-location">Parking Luna Rossa</span>
-            <span class="step-badge-num">12</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>12</span>
           </div>
           <picture>
             <source srcset="/img/seg-a/12.webp" type="image/webp">
@@ -223,13 +323,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-a.12.caption"></p>
       </article>
-      <article class="step" id="step-13">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 13 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-13" data-step="13">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 13 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.13.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="13">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Tunnel Atrani</span>
-            <span class="step-badge-num">13</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>13</span>
           </div>
           <picture>
             <source srcset="/img/seg-a/13.webp" type="image/webp">
@@ -242,13 +347,18 @@
       <div class="segment-divider">
         <span class="segment-divider-text" data-i18n="common.now_in_atrani">You are now entering Atrani</span>
       </div>
-      <article class="step" id="step-14">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 14 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-14" data-step="14">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 14 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.01.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="14">
           <div class="step-badge">
-            <i data-lucide="utensils"></i>
-            <span class="step-badge-location">Ristorante Zaccaria</span>
-            <span class="step-badge-num">14</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>14</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/01.webp" type="image/webp">
@@ -257,13 +367,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.01.caption"></p>
       </article>
-      <article class="step" id="step-15">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 15 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-15" data-step="15">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 15 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.02.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="15">
           <div class="step-badge">
-            <i data-lucide="utensils"></i>
-            <span class="step-badge-location">Ristorante Zaccaria</span>
-            <span class="step-badge-num">15</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>15</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/02.webp" type="image/webp">
@@ -272,13 +387,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.02.caption"></p>
       </article>
-      <article class="step" id="step-16">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 16 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-16" data-step="16">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 16 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.03.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="16">
           <div class="step-badge">
-            <i data-lucide="utensils"></i>
-            <span class="step-badge-location">Ristorante Zaccaria</span>
-            <span class="step-badge-num">16</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>16</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/03.webp" type="image/webp">
@@ -287,13 +407,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.03.caption"></p>
       </article>
-      <article class="step" id="step-17">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 17 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-17" data-step="17">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 17 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.04.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="17">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Road to Atrani</span>
-            <span class="step-badge-num">17</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>17</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/04.webp" type="image/webp">
@@ -302,13 +427,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.04.caption"></p>
       </article>
-      <article class="step" id="step-18">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 18 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-18" data-step="18">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 18 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.05.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="18">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Road to Atrani</span>
-            <span class="step-badge-num">18</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>18</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/05.webp" type="image/webp">
@@ -317,13 +447,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.05.caption"></p>
       </article>
-      <article class="step" id="step-19">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 19 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-19" data-step="19">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 19 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.06.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="19">
           <div class="step-badge">
-            <i data-lucide="square-parking"></i>
-            <span class="step-badge-location">Parking of Atrani</span>
-            <span class="step-badge-num">19</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>19</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/06.webp" type="image/webp">
@@ -332,13 +467,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.06.caption"></p>
       </article>
-      <article class="step" id="step-20">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 20 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-20" data-step="20">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 20 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.07.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="20">
           <div class="step-badge">
-            <i data-lucide="square-parking"></i>
-            <span class="step-badge-location">Parking of Atrani</span>
-            <span class="step-badge-num">20</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>20</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/07.webp" type="image/webp">
@@ -347,13 +487,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.07.caption"></p>
       </article>
-      <article class="step" id="step-21">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 21 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-21" data-step="21">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 21 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.08.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="21">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Atrani</span>
-            <span class="step-badge-num">21</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>21</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/08.webp" type="image/webp">
@@ -362,13 +507,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.08.caption"></p>
       </article>
-      <article class="step" id="step-22">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 22 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-22" data-step="22">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 22 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.09.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="22">
           <div class="step-badge">
-            <i data-lucide="landmark"></i>
-            <span class="step-badge-location">Main Square Atrani</span>
-            <span class="step-badge-num">22</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>22</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/09.webp" type="image/webp">
@@ -377,13 +527,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.09.caption"></p>
       </article>
-      <article class="step" id="step-23">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 23 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-23" data-step="23">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 23 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.10.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="23">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Atrani</span>
-            <span class="step-badge-num">23</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>23</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/10.webp" type="image/webp">
@@ -392,13 +547,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.10.caption"></p>
       </article>
-      <article class="step" id="step-24">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 24 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-24" data-step="24">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 24 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.11.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="24">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Road Atrani</span>
-            <span class="step-badge-num">24</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>24</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/11.webp" type="image/webp">
@@ -407,13 +567,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.11.caption"></p>
       </article>
-      <article class="step" id="step-25">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 25 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-25" data-step="25">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 25 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.12.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="25">
           <div class="step-badge">
-            <i data-lucide="utensils"></i>
-            <span class="step-badge-location">Ristorante A' Paranza</span>
-            <span class="step-badge-num">25</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>25</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/12.webp" type="image/webp">
@@ -422,13 +587,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.12.caption"></p>
       </article>
-      <article class="step" id="step-26">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 26 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-26" data-step="26">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 26 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.13.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="26">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Road Atrani</span>
-            <span class="step-badge-num">26</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>26</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/13.webp" type="image/webp">
@@ -437,13 +607,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.13.caption"></p>
       </article>
-      <article class="step" id="step-27">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 27 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-27" data-step="27">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 27 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.14.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="27">
           <div class="step-badge">
-            <i data-lucide="store"></i>
-            <span class="step-badge-location">Fruit Shop Atrani</span>
-            <span class="step-badge-num">27</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>27</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/14.webp" type="image/webp">
@@ -452,13 +627,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.14.caption"></p>
       </article>
-      <article class="step" id="step-28">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 28 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-28" data-step="28">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 28 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.15.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="28">
           <div class="step-badge">
-            <i data-lucide="store"></i>
-            <span class="step-badge-location">Fruit Shop Atrani</span>
-            <span class="step-badge-num">28</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>28</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/15.webp" type="image/webp">
@@ -467,13 +647,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.15.caption"></p>
       </article>
-      <article class="step" id="step-29">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 29 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-29" data-step="29">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 29 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.16.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="29">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Atrani</span>
-            <span class="step-badge-num">29</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>29</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/16.webp" type="image/webp">
@@ -482,13 +667,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.16.caption"></p>
       </article>
-      <article class="step" id="step-30">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 30 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-30" data-step="30">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 30 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.17.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="30">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Atrani</span>
-            <span class="step-badge-num">30</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>30</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/17.webp" type="image/webp">
@@ -497,13 +687,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.17.caption"></p>
       </article>
-      <article class="step" id="step-31">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 31 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-31" data-step="31">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 31 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.18.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="31">
           <div class="step-badge">
-            <i data-lucide="map-pin"></i>
-            <span class="step-badge-location">Atrani</span>
-            <span class="step-badge-num">31</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>31</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/18.webp" type="image/webp">
@@ -512,13 +707,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.18.caption"></p>
       </article>
-      <article class="step" id="step-32">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 32 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-32" data-step="32">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 32 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.19.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="32">
           <div class="step-badge">
-            <i data-lucide="home"></i>
-            <span class="step-badge-location">Greg's House</span>
-            <span class="step-badge-num">32</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>32</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/19.webp" type="image/webp">
@@ -527,13 +727,18 @@
         </div>
         <p class="step-caption" data-i18n="steps.seg-b.19.caption"></p>
       </article>
-      <article class="step" id="step-33">
-        <div class="step-number"><i data-lucide="map-pin"></i> <span data-i18n="common.step">Step</span> 33 <span data-i18n="common.of">of</span> 33</div>
-        <div class="step-photo">
+      <article class="step" id="step-33" data-step="33">
+        <div class="step-number">
+          <i data-lucide="map-pin"></i>
+          <span data-i18n="common.step">Step</span> 33 <span data-i18n="common.of">of</span> 33
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-b.20.caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          </button>
+        </div>
+        <div class="step-photo" data-step-index="33">
           <div class="step-badge">
-            <i data-lucide="home"></i>
-            <span class="step-badge-location">Greg's House</span>
-            <span class="step-badge-num">33</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>33</span>
           </div>
           <picture>
             <source srcset="/img/seg-b/20.webp" type="image/webp">
@@ -546,30 +751,359 @@
     <div class="arrival-card">
       <div class="arrival-icon"><i data-lucide="home"></i></div>
       <h2 class="arrival-title" data-i18n="house.arrived">Welcome to Greg's House!</h2>
-      <p class="arrival-text" data-i18n="house.arrival_text">You've made it! Please ring the doorbell on the left — we'll see you right away.</p>
+      <p class="arrival-text">You've made it. Time to relax.</p>
+    </div>
+  </main>
 
-      <div class="arrival-wifi">
-        <div class="arrival-wifi-header">
-          <i data-lucide="wifi"></i>
-          <span>Wi-Fi</span>
-        </div>
-        <div class="arrival-wifi-details">
-          <div class="arrival-wifi-row">
-            <span class="arrival-wifi-label">Network</span>
-            <span class="arrival-wifi-value">Amalfi.Day</span>
-          </div>
-          <div class="arrival-wifi-row">
-            <span class="arrival-wifi-label">Password</span>
-            <span class="arrival-wifi-value arrival-wifi-password">Z1x2c3v4</span>
-          </div>
-        </div>
-        <button class="arrival-wifi-connect" data-copy="Z1x2c3v4">
-          <i data-lucide="clipboard-copy"></i>
-          <span data-i18n="house.wifi_copy">Copy password</span>
+  <button type="button" class="drawer-fab" id="drawer-fab" aria-label="Show all steps" data-i18n-aria="common.steps_drawer">
+    <i data-lucide="list"></i>
+    <span data-i18n="common.steps">Steps</span>
+  </button>
+
+  <div class="drawer" id="steps-drawer" aria-hidden="true" role="dialog" aria-label="All steps">
+    <div class="drawer-backdrop" data-drawer-close></div>
+    <div class="drawer-sheet">
+      <div class="drawer-handle" data-drawer-close></div>
+      <div class="drawer-header">
+        <h3 class="drawer-title" data-i18n="common.all_steps">All steps</h3>
+        <button type="button" class="drawer-close" aria-label="Close" data-drawer-close>
+          <i data-lucide="x"></i>
+        </button>
+      </div>
+      <div class="drawer-list" id="drawer-list">
+        <button type="button" class="drawer-item" data-jump-step="1">
+          <span class="drawer-item-num">1</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-a/01.webp" type="image/webp">
+              <img src="/img/seg-a/01.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-a.01.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="2">
+          <span class="drawer-item-num">2</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-a/02.webp" type="image/webp">
+              <img src="/img/seg-a/02.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-a.02.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="3">
+          <span class="drawer-item-num">3</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-a/03.webp" type="image/webp">
+              <img src="/img/seg-a/03.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-a.03.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="4">
+          <span class="drawer-item-num">4</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-a/04.webp" type="image/webp">
+              <img src="/img/seg-a/04.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-a.04.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="5">
+          <span class="drawer-item-num">5</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-a/05.webp" type="image/webp">
+              <img src="/img/seg-a/05.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-a.05.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="6">
+          <span class="drawer-item-num">6</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-a/06.webp" type="image/webp">
+              <img src="/img/seg-a/06.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-a.06.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="7">
+          <span class="drawer-item-num">7</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-a/07.webp" type="image/webp">
+              <img src="/img/seg-a/07.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-a.07.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="8">
+          <span class="drawer-item-num">8</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-a/08.webp" type="image/webp">
+              <img src="/img/seg-a/08.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-a.08.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="9">
+          <span class="drawer-item-num">9</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-a/09.webp" type="image/webp">
+              <img src="/img/seg-a/09.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-a.09.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="10">
+          <span class="drawer-item-num">10</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-a/10.webp" type="image/webp">
+              <img src="/img/seg-a/10.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-a.10.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="11">
+          <span class="drawer-item-num">11</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-a/11.webp" type="image/webp">
+              <img src="/img/seg-a/11.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-a.11.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="12">
+          <span class="drawer-item-num">12</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-a/12.webp" type="image/webp">
+              <img src="/img/seg-a/12.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-a.12.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="13">
+          <span class="drawer-item-num">13</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-a/13.webp" type="image/webp">
+              <img src="/img/seg-a/13.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-a.13.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="14">
+          <span class="drawer-item-num">14</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/01.webp" type="image/webp">
+              <img src="/img/seg-b/01.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.01.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="15">
+          <span class="drawer-item-num">15</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/02.webp" type="image/webp">
+              <img src="/img/seg-b/02.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.02.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="16">
+          <span class="drawer-item-num">16</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/03.webp" type="image/webp">
+              <img src="/img/seg-b/03.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.03.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="17">
+          <span class="drawer-item-num">17</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/04.webp" type="image/webp">
+              <img src="/img/seg-b/04.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.04.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="18">
+          <span class="drawer-item-num">18</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/05.webp" type="image/webp">
+              <img src="/img/seg-b/05.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.05.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="19">
+          <span class="drawer-item-num">19</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/06.webp" type="image/webp">
+              <img src="/img/seg-b/06.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.06.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="20">
+          <span class="drawer-item-num">20</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/07.webp" type="image/webp">
+              <img src="/img/seg-b/07.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.07.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="21">
+          <span class="drawer-item-num">21</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/08.webp" type="image/webp">
+              <img src="/img/seg-b/08.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.08.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="22">
+          <span class="drawer-item-num">22</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/09.webp" type="image/webp">
+              <img src="/img/seg-b/09.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.09.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="23">
+          <span class="drawer-item-num">23</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/10.webp" type="image/webp">
+              <img src="/img/seg-b/10.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.10.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="24">
+          <span class="drawer-item-num">24</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/11.webp" type="image/webp">
+              <img src="/img/seg-b/11.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.11.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="25">
+          <span class="drawer-item-num">25</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/12.webp" type="image/webp">
+              <img src="/img/seg-b/12.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.12.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="26">
+          <span class="drawer-item-num">26</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/13.webp" type="image/webp">
+              <img src="/img/seg-b/13.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.13.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="27">
+          <span class="drawer-item-num">27</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/14.webp" type="image/webp">
+              <img src="/img/seg-b/14.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.14.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="28">
+          <span class="drawer-item-num">28</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/15.webp" type="image/webp">
+              <img src="/img/seg-b/15.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.15.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="29">
+          <span class="drawer-item-num">29</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/16.webp" type="image/webp">
+              <img src="/img/seg-b/16.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.16.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="30">
+          <span class="drawer-item-num">30</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/17.webp" type="image/webp">
+              <img src="/img/seg-b/17.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.17.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="31">
+          <span class="drawer-item-num">31</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/18.webp" type="image/webp">
+              <img src="/img/seg-b/18.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.18.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="32">
+          <span class="drawer-item-num">32</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/19.webp" type="image/webp">
+              <img src="/img/seg-b/19.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.19.caption"></span>
+        </button>
+        <button type="button" class="drawer-item" data-jump-step="33">
+          <span class="drawer-item-num">33</span>
+          <span class="drawer-item-thumb">
+            <picture>
+              <source srcset="/img/seg-b/20.webp" type="image/webp">
+              <img src="/img/seg-b/20.jpg" alt="" loading="lazy" width="120" height="80">
+            </picture>
+          </span>
+          <span class="drawer-item-caption" data-i18n="steps.seg-b.20.caption"></span>
         </button>
       </div>
     </div>
-  </main>
+  </div>
 
   <footer class="route-footer">
     <button class="btn-nav btn-prev" id="btn-prev" disabled>
@@ -585,5 +1119,6 @@
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="/js/app.js"></script>
+  <script src="/js/lightbox.js"></script>
 </body>
 </html>

@@ -15,7 +15,22 @@
     "now_in_atrani": "Du betrittst jetzt Atrani",
     "entering_tunnel_route": "Weiter durch das Dorf",
     "save_title": "F\u00fcr Offline-Nutzung speichern",
-    "save_hint": "Das Mobilfunksignal ist auf der Strecke wegen der Berge schwach. Tippe auf <strong>Teilen</strong> \u2192 <strong>Zum Home-Bildschirm</strong>, um die Anleitung auf dem Handy zu speichern."
+    "save_hint": "Das Mobilfunksignal ist auf der Strecke wegen der Berge schwach. Tippe auf <strong>Teilen</strong> \u2192 <strong>Zum Home-Bildschirm</strong>, um die Anleitung auf dem Handy zu speichern.",
+    "language": "Sprache",
+    "read_aloud": "Vorlesen",
+    "toggle_auto_read": "Auto-Vorlesen umschalten",
+    "steps": "Schritte",
+    "steps_drawer": "Alle Schritte anzeigen",
+    "all_steps": "Alle Schritte"
+  },
+  "rail": {
+    "amalfi": "Amalfi",
+    "atrani": "Atrani",
+    "house": "Haus",
+    "tunnel": "Tunnel",
+    "village": "Dorf",
+    "meeting": "Treffpunkt",
+    "bus_stop": "Bushaltestelle"
   },
   "house": {
     "title": "Greg's House finden",
