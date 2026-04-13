@@ -22,7 +22,11 @@
     "toggle_auto_read": "Toggle auto-narration",
     "steps": "Steps",
     "steps_drawer": "Show all steps",
-    "all_steps": "All steps"
+    "all_steps": "All steps",
+    "wifi": "Wi-Fi",
+    "network": "Network",
+    "password": "Password",
+    "password_copied": "Copied!"
   },
   "rail": {
     "amalfi": "Amalfi",
@@ -51,7 +55,8 @@
     "time_amalfi": "~12 min walk \u00b7 15 steps",
     "from_atrani_title": "From Atrani",
     "from_atrani_desc": "The meeting point is right at the tunnel exit in Atrani. If you're already in Atrani, it's just a short walk.",
-    "arrived": "You've reached the Meeting Point!"
+    "arrived": "You've reached the Meeting Point!",
+    "arrival_text": "Welcome! Look for Greg nearby."
   },
   "routes": {
     "amalfi_house": "Amalfi \u2192 Greg's House",

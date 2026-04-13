@@ -3,7 +3,7 @@
    Cache-first strategy with aggressive precaching
    ========================================================================== */
 
-const CACHE_VERSION = 'find-amalfi-v7';
+const CACHE_VERSION = 'find-amalfi-v8';
 
 /* --- Asset list to precache --- */
 const PRECACHE_URLS = [
@@ -19,6 +19,8 @@ const PRECACHE_URLS = [
   '/i18n/it.json',
   '/i18n/de.json',
   '/i18n/fr.json',
+  '/i18n/ru.json',
+  '/i18n/zh.json',
   '/manifest.json',
   // Hero images
   '/img/hero/amalfi-harbor.webp',

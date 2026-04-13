@@ -5,13 +5,13 @@
 (function () {
   'use strict';
 
-  const SUPPORTED_LANGS = ['en', 'it', 'de', 'fr'];
-  const LANG_NATIVE = { en: 'English', it: 'Italiano', de: 'Deutsch', fr: 'Français' };
+  const SUPPORTED_LANGS = ['en', 'it', 'de', 'fr', 'ru', 'zh'];
+  const LANG_NATIVE = { en: 'English', it: 'Italiano', de: 'Deutsch', fr: 'Français', ru: 'Русский', zh: '中文' };
   const DEFAULT_LANG = 'en';
   const LANG_COOKIE = 'lang';
   const TTS_AUTO_COOKIE = 'tts_auto';
   const SCROLL_KEY_PREFIX = 'scroll_';
-  const TTS_BCP47 = { en: 'en-US', it: 'it-IT', de: 'de-DE', fr: 'fr-FR' };
+  const TTS_BCP47 = { en: 'en-US', it: 'it-IT', de: 'de-DE', fr: 'fr-FR', ru: 'ru-RU', zh: 'zh-CN' };
 
   let currentLang = DEFAULT_LANG;
   let translations = {};
@@ -462,11 +462,11 @@
     document.querySelectorAll('[data-copy]').forEach(function (btn) {
       btn.addEventListener('click', function () {
         const text = btn.dataset.copy;
-        const span = btn.querySelector('span');
-        const original = span.textContent;
         navigator.clipboard.writeText(text).then(function () {
-          span.textContent = 'Copied!';
-          setTimeout(function () { span.textContent = original; }, 2000);
+          btn.classList.add('copied');
+          setTimeout(function () { btn.classList.remove('copied'); }, 1800);
+        }).catch(function (err) {
+          console.warn('Clipboard write failed:', err);
         });
       });
     });

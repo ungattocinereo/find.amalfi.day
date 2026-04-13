@@ -22,7 +22,11 @@
     "toggle_auto_read": "Auto-Vorlesen umschalten",
     "steps": "Schritte",
     "steps_drawer": "Alle Schritte anzeigen",
-    "all_steps": "Alle Schritte"
+    "all_steps": "Alle Schritte",
+    "wifi": "Wi-Fi",
+    "network": "Netzwerk",
+    "password": "Passwort",
+    "password_copied": "Kopiert!"
   },
   "rail": {
     "amalfi": "Amalfi",
@@ -51,7 +55,8 @@
     "time_amalfi": "~12 Min. zu Fu\u00df \u00b7 15 Schritte",
     "from_atrani_title": "Von Atrani",
     "from_atrani_desc": "Der Treffpunkt ist direkt am Tunnelausgang in Atrani. Wenn du schon in Atrani bist, ist es nur ein kurzer Fu\u00dfweg.",
-    "arrived": "Du hast den Treffpunkt erreicht!"
+    "arrived": "Du hast den Treffpunkt erreicht!",
+    "arrival_text": "Willkommen! Greg ist in der N\u00e4he \u2014 halt Ausschau nach ihm."
   },
   "routes": {
     "amalfi_house": "Amalfi \u2192 Greg's House",

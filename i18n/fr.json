@@ -22,7 +22,11 @@
     "toggle_auto_read": "Activer la narration automatique",
     "steps": "\u00c9tapes",
     "steps_drawer": "Voir toutes les \u00e9tapes",
-    "all_steps": "Toutes les \u00e9tapes"
+    "all_steps": "Toutes les \u00e9tapes",
+    "wifi": "Wi-Fi",
+    "network": "R\u00e9seau",
+    "password": "Mot de passe",
+    "password_copied": "Copi\u00e9 !"
   },
   "rail": {
     "amalfi": "Amalfi",
@@ -51,7 +55,8 @@
     "time_amalfi": "~12 min \u00e0 pied \u00b7 15 \u00e9tapes",
     "from_atrani_title": "Depuis Atrani",
     "from_atrani_desc": "Le point de rendez-vous est juste \u00e0 la sortie du tunnel \u00e0 Atrani. Si tu es d\u00e9j\u00e0 \u00e0 Atrani, c\u2019est \u00e0 deux pas.",
-    "arrived": "Tu as atteint le point de rendez-vous !"
+    "arrived": "Tu as atteint le point de rendez-vous !",
+    "arrival_text": "Bienvenue ! Cherche Greg dans les parages."
   },
   "routes": {
     "amalfi_house": "Amalfi \u2192 Greg's House",

@@ -27,6 +27,8 @@ const LANG_OPTIONS = [
   { code: 'it', native: 'Italiano' },
   { code: 'de', native: 'Deutsch' },
   { code: 'fr', native: 'Français' },
+  { code: 'ru', native: 'Русский' },
+  { code: 'zh', native: '中文' },
 ];
 
 function langPickerMarkup() {
@@ -85,6 +87,7 @@ const routes = [
     arrivalText: 'Welcome to Greg\'s House!',
     arrivalDetail: 'You\'ve made it. Time to relax.',
     arrivalIcon: 'home',
+    wifi: { ssid: 'Amalfi.Day', password: 'Z1x2c3v4' },
   },
   {
     file: 'route/atrani-house.html',
@@ -105,6 +108,7 @@ const routes = [
     arrivalText: 'Welcome to Greg\'s House!',
     arrivalDetail: 'You\'ve made it. Time to relax.',
     arrivalIcon: 'home',
+    wifi: { ssid: 'Amalfi.Day', password: 'Z1x2c3v4' },
   },
   {
     file: 'route/amalfi-awesome.html',
@@ -258,7 +262,27 @@ ${stepsHtml}
     <div class="arrival-card">
       <div class="arrival-icon"><i data-lucide="${route.arrivalIcon}"></i></div>
       <h2 class="arrival-title" data-i18n="${route.arrivalKey}">${route.arrivalText}</h2>
-      <p class="arrival-text">${route.arrivalDetail}</p>
+      <p class="arrival-text" data-i18n="${route.arrivalKey.replace(/\.arrived$/, '.arrival_text')}">${route.arrivalDetail}</p>${route.wifi ? `
+      <div class="arrival-wifi">
+        <div class="arrival-wifi-header">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><path d="M5 13a10 10 0 0 1 14 0"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M2 8.82a15 15 0 0 1 20 0"/><line x1="12" x2="12.01" y1="20" y2="20"/></svg>
+          <span data-i18n="common.wifi">Wi-Fi</span>
+        </div>
+        <div class="arrival-wifi-details">
+          <div class="arrival-wifi-row">
+            <span class="arrival-wifi-label" data-i18n="common.network">Network</span>
+            <span class="arrival-wifi-value">${route.wifi.ssid}</span>
+          </div>
+          <div class="arrival-wifi-row">
+            <span class="arrival-wifi-label" data-i18n="common.password">Password</span>
+            <button type="button" class="arrival-wifi-password" data-copy="${route.wifi.password}" aria-label="Copy password">
+              <code>${route.wifi.password}</code>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide arrival-wifi-icon arrival-wifi-icon--copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide arrival-wifi-icon arrival-wifi-icon--check"><path d="M20 6 9 17l-5-5"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>` : ''}
     </div>
   </main>
 

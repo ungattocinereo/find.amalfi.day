@@ -22,7 +22,11 @@
     "toggle_auto_read": "Attiva narrazione automatica",
     "steps": "Passi",
     "steps_drawer": "Mostra tutti i passi",
-    "all_steps": "Tutti i passi"
+    "all_steps": "Tutti i passi",
+    "wifi": "Wi-Fi",
+    "network": "Rete",
+    "password": "Password",
+    "password_copied": "Copiato!"
   },
   "rail": {
     "amalfi": "Amalfi",
@@ -51,7 +55,8 @@
     "time_amalfi": "~12 min a piedi \u00b7 15 passi",
     "from_atrani_title": "Da Atrani",
     "from_atrani_desc": "Il punto d'incontro \u00e8 proprio all'uscita del tunnel ad Atrani. Se sei gi\u00e0 ad Atrani, \u00e8 a pochi passi.",
-    "arrived": "Hai raggiunto il punto d'incontro!"
+    "arrived": "Hai raggiunto il punto d'incontro!",
+    "arrival_text": "Benvenuto! Cerca Greg nei dintorni."
   },
   "routes": {
     "amalfi_house": "Amalfi \u2192 Greg's House",

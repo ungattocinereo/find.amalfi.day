@@ -1309,41 +1309,51 @@ body.lang-picker-open { overflow: hidden; }
 }
 
 .arrival-wifi-password {
-  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-  letter-spacing: 0.08em;
-  background: var(--color-surface);
-  padding: 2px 10px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border-light);
-}
-
-.arrival-wifi-connect {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 8px;
-  width: 100%;
-  padding: 12px var(--spacing-md);
-  background: var(--color-accent);
-  color: white;
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  font-weight: 600;
-  border: none;
+  padding: 6px 12px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-light);
   border-radius: var(--radius-sm);
-  text-decoration: none;
+  color: var(--color-text);
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  min-height: 36px;
 }
 
-.arrival-wifi-connect:hover {
-  background: var(--color-accent-hover);
+.arrival-wifi-password:hover,
+.arrival-wifi-password:focus-visible {
+  border-color: var(--color-accent);
+  background: var(--color-accent-light);
 }
 
-.arrival-wifi-connect .lucide {
-  width: 18px;
-  height: 18px;
+.arrival-wifi-password code {
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', 'Menlo', monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
 }
+
+.arrival-wifi-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--color-text-secondary);
+  transition: color 0.15s ease, opacity 0.15s ease;
+}
+
+.arrival-wifi-icon--check { display: none; color: var(--color-accent); }
+
+.arrival-wifi-password.copied {
+  border-color: var(--color-accent);
+  background: var(--color-accent-light);
+}
+.arrival-wifi-password.copied .arrival-wifi-icon--copy { display: none; }
+.arrival-wifi-password.copied .arrival-wifi-icon--check { display: inline; }
+.arrival-wifi-password.copied code { color: var(--color-accent); }
+
+.arrival-wifi-password:hover .arrival-wifi-icon--copy { color: var(--color-accent); }
 
 /* --- Route Footer (Fixed Bottom Bar) --- */
 .route-footer {
