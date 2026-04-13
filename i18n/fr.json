@@ -17,6 +17,7 @@
     "save_title": "Enregistrer pour une utilisation hors ligne",
     "save_hint": "Le signal mobile est faible le long du trajet \u00e0 cause des montagnes. Appuyez sur <strong>Partager</strong> \u2192 <strong>Sur l\u2019\u00e9cran d\u2019accueil</strong> pour sauvegarder le guide sur votre t\u00e9l\u00e9phone.",
     "language": "Langue",
+    "pick_language": "Choisis ta langue",
     "read_aloud": "Lire \u00e0 voix haute",
     "toggle_auto_read": "Activer la narration automatique",
     "steps": "\u00c9tapes",

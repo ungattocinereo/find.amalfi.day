@@ -27,68 +27,54 @@
   <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body class="route-body">
-  <!-- Prominent language hero strip — visible only at top of page -->
-  <div class="lang-hero" id="lang-hero">
-    <span class="lang-hero-icon"><i data-lucide="globe"></i></span>
-    <span class="lang-hero-label" data-i18n="common.language">Language</span>
-    <nav class="lang-switcher lang-switcher--hero" aria-label="Language">
-      <button class="lang-btn" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="it">IT</button>
-      <button class="lang-btn" data-lang="de">DE</button>
-      <button class="lang-btn" data-lang="fr">FR</button>
-    </nav>
-  </div>
-  <!-- Sentinel observed by JS to detect when lang-hero has scrolled out of view -->
-  <div class="lang-hero-sentinel" aria-hidden="true"></div>
-
-  <header class="route-header">
-    <a href="/a/" class="back-link" aria-label="Back">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
-      <span data-i18n="common.back">Back</span>
+  <header class="nav" id="nav">
+    <a href="/a/" class="nav-btn nav-back" aria-label="Back to home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
     </a>
-    <nav class="lang-switcher" aria-label="Language">
-      <button class="lang-btn" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="it">IT</button>
-      <button class="lang-btn" data-lang="de">DE</button>
-      <button class="lang-btn" data-lang="fr">FR</button>
-    </nav>
-    <button type="button" class="header-tts-toggle" id="tts-toggle" aria-label="Toggle auto-narration" data-i18n-aria="common.toggle_auto_read">
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
-    </button>
+    <div class="nav-right">
+      <button type="button" class="nav-lang-chip" id="nav-lang-chip" aria-label="Change language" aria-haspopup="dialog" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <span class="nav-lang-code" id="nav-lang-code">EN</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <button type="button" class="nav-btn nav-tts" id="tts-toggle" aria-label="Toggle auto-narration" aria-pressed="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+      </button>
+    </div>
   </header>
 
-  <div class="progress-rail" id="progress-rail" data-segments='[{"id":"amalfi","i18nKey":"rail.amalfi","label":"Amalfi","step":1},{"id":"tunnel","i18nKey":"rail.tunnel","label":"Tunnel","step":8},{"id":"meeting","i18nKey":"rail.meeting","label":"Meeting Point","step":15}]'>
+  <div class="rail" id="rail" data-segments='[{"id":"amalfi","i18nKey":"rail.amalfi","label":"Amalfi","step":1},{"id":"tunnel","i18nKey":"rail.tunnel","label":"Tunnel","step":8},{"id":"meeting","i18nKey":"rail.meeting","label":"Meeting Point","step":15}]'>
     <div class="rail-track">
-      <div class="rail-fill" id="rail-fill"></div>
+      <div class="rail-track-fill" id="rail-fill"></div>
     </div>
-    <div class="rail-nodes">
-      <div class="rail-node" data-segment="amalfi" data-segment-step="1">
-        <span class="rail-node-dot"></span>
-        <span class="rail-node-label" data-i18n="rail.amalfi">Amalfi</span>
+    <div class="rail-content">
+      <div class="rail-segs">
+        <div class="rail-seg" data-segment="amalfi" data-segment-step="1">
+          <span class="rail-seg-dot"></span>
+          <span class="rail-seg-label" data-i18n="rail.amalfi">Amalfi</span>
+        </div>
+        <div class="rail-seg" data-segment="tunnel" data-segment-step="8">
+          <span class="rail-seg-dot"></span>
+          <span class="rail-seg-label" data-i18n="rail.tunnel">Tunnel</span>
+        </div>
+        <div class="rail-seg" data-segment="meeting" data-segment-step="15">
+          <span class="rail-seg-dot"></span>
+          <span class="rail-seg-label" data-i18n="rail.meeting">Meeting Point</span>
+        </div>
       </div>
-      <div class="rail-node" data-segment="tunnel" data-segment-step="8">
-        <span class="rail-node-dot"></span>
-        <span class="rail-node-label" data-i18n="rail.tunnel">Tunnel</span>
+      <div class="rail-counter">
+        <span id="rail-step-num">1</span><span class="rail-counter-sep">/</span>15
       </div>
-      <div class="rail-node" data-segment="meeting" data-segment-step="15">
-        <span class="rail-node-dot"></span>
-        <span class="rail-node-label" data-i18n="rail.meeting">Meeting Point</span>
-      </div>
-    </div>
-    <div class="rail-meta">
-      <span class="rail-meta-step"><span data-i18n="common.step">Step</span> <span id="rail-step-num">1</span> <span data-i18n="common.of">of</span> 15</span>
-      <span class="rail-meta-sep">·</span>
-      <span class="rail-meta-segment" id="rail-segment-label"></span>
     </div>
   </div>
 
   <main class="steps" data-route="amalfi-awesome" data-total="15">
       <article class="step" id="step-1" data-step="1">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 1 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.01.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="1">
@@ -105,10 +91,10 @@
       </article>
       <article class="step" id="step-2" data-step="2">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 2 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.02.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="2">
@@ -125,10 +111,10 @@
       </article>
       <article class="step" id="step-3" data-step="3">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 3 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.03.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="3">
@@ -145,10 +131,10 @@
       </article>
       <article class="step" id="step-4" data-step="4">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 4 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.04.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="4">
@@ -165,10 +151,10 @@
       </article>
       <article class="step" id="step-5" data-step="5">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 5 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.05.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="5">
@@ -185,10 +171,10 @@
       </article>
       <article class="step" id="step-6" data-step="6">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 6 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.06.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="6">
@@ -205,10 +191,10 @@
       </article>
       <article class="step" id="step-7" data-step="7">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 7 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.07.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="7">
@@ -225,10 +211,10 @@
       </article>
       <article class="step" id="step-8" data-step="8">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 8 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.08.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="8">
@@ -245,10 +231,10 @@
       </article>
       <article class="step" id="step-9" data-step="9">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 9 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.09.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="9">
@@ -265,10 +251,10 @@
       </article>
       <article class="step" id="step-10" data-step="10">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 10 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.10.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="10">
@@ -285,10 +271,10 @@
       </article>
       <article class="step" id="step-11" data-step="11">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 11 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.11.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="11">
@@ -305,10 +291,10 @@
       </article>
       <article class="step" id="step-12" data-step="12">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 12 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.12.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="12">
@@ -325,10 +311,10 @@
       </article>
       <article class="step" id="step-13" data-step="13">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 13 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-a.13.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="13">
@@ -349,10 +335,10 @@
       </div>
       <article class="step" id="step-14" data-step="14">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 14 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-c.01.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="14">
@@ -369,10 +355,10 @@
       </article>
       <article class="step" id="step-15" data-step="15">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
           <span data-i18n="common.step">Step</span> 15 <span data-i18n="common.of">of</span> 15
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.seg-c.02.caption">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
           </button>
         </div>
         <div class="step-photo" data-step-index="15">
@@ -560,6 +546,32 @@
             </picture>
           </span>
           <span class="drawer-item-caption" data-i18n="steps.seg-c.02.caption"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="lang-picker" id="lang-picker" aria-hidden="true" role="dialog" aria-label="Language">
+    <div class="lang-picker-backdrop" data-lang-close></div>
+    <div class="lang-picker-sheet">
+      <div class="lang-picker-handle" data-lang-close></div>
+      <h3 class="lang-picker-title" data-i18n="common.pick_language">Language</h3>
+      <div class="lang-picker-list">
+        <button type="button" class="lang-option" data-lang="en">
+          <span class="lang-option-code">EN</span>
+          <span class="lang-option-name">English</span>
+        </button>
+        <button type="button" class="lang-option" data-lang="it">
+          <span class="lang-option-code">IT</span>
+          <span class="lang-option-name">Italiano</span>
+        </button>
+        <button type="button" class="lang-option" data-lang="de">
+          <span class="lang-option-code">DE</span>
+          <span class="lang-option-name">Deutsch</span>
+        </button>
+        <button type="button" class="lang-option" data-lang="fr">
+          <span class="lang-option-code">FR</span>
+          <span class="lang-option-name">Français</span>
         </button>
       </div>
     </div>

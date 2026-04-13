@@ -5,15 +5,14 @@
 (function () {
   'use strict';
 
-  /* --- Configuration --- */
   const SUPPORTED_LANGS = ['en', 'it', 'de', 'fr'];
+  const LANG_NATIVE = { en: 'English', it: 'Italiano', de: 'Deutsch', fr: 'Français' };
   const DEFAULT_LANG = 'en';
   const LANG_COOKIE = 'lang';
   const TTS_AUTO_COOKIE = 'tts_auto';
   const SCROLL_KEY_PREFIX = 'scroll_';
   const TTS_BCP47 = { en: 'en-US', it: 'it-IT', de: 'de-DE', fr: 'fr-FR' };
 
-  /* --- State --- */
   let currentLang = DEFAULT_LANG;
   let translations = {};
   let currentStep = 1;
@@ -21,20 +20,12 @@
   let railSegments = [];
   let ttsAutoEnabled = false;
 
-  /* ========================================================================
-     Lucide Icons
-     ======================================================================== */
-
+  /* === Icons === */
   function initLucideIcons() {
-    if (typeof lucide !== 'undefined' && lucide.createIcons) {
-      lucide.createIcons();
-    }
+    if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
   }
 
-  /* ========================================================================
-     i18n Module
-     ======================================================================== */
-
+  /* === i18n === */
   function detectLanguage() {
     const params = new URLSearchParams(window.location.search);
     const urlLang = params.get('lang');
@@ -60,7 +51,6 @@
     const c = document.cookie.split('; ').find(x => x.startsWith(name + '='));
     return c ? decodeURIComponent(c.split('=')[1]) : null;
   }
-
   function setCookie(name, value) {
     document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=31536000; SameSite=Lax`;
   }
@@ -76,9 +66,7 @@
       translations = await response.json();
     } catch (e) {
       console.warn(`Failed to load ${lang} translations, falling back to ${DEFAULT_LANG}`);
-      if (lang !== DEFAULT_LANG) {
-        return loadTranslations(DEFAULT_LANG);
-      }
+      if (lang !== DEFAULT_LANG) return loadTranslations(DEFAULT_LANG);
     }
   }
 
@@ -87,32 +75,30 @@
       const key = el.getAttribute('data-i18n');
       const value = getNestedValue(translations, key);
       if (!value) return;
-      if (el.hasAttribute('data-i18n-html')) {
-        el.innerHTML = value;
-      } else {
-        el.textContent = value;
-      }
+      if (el.hasAttribute('data-i18n-html')) el.innerHTML = value;
+      else el.textContent = value;
     });
 
     document.querySelectorAll('[data-i18n-alt]').forEach(el => {
-      const key = el.getAttribute('data-i18n-alt');
-      const value = getNestedValue(translations, key);
+      const value = getNestedValue(translations, el.getAttribute('data-i18n-alt'));
       if (value) el.alt = value;
     });
 
     document.querySelectorAll('[data-i18n-aria]').forEach(el => {
-      const key = el.getAttribute('data-i18n-aria');
-      const value = getNestedValue(translations, key);
+      const value = getNestedValue(translations, el.getAttribute('data-i18n-aria'));
       if (value) el.setAttribute('aria-label', value);
     });
 
     document.documentElement.lang = currentLang;
     initLucideIcons();
-    updateRailSegmentLabel();
+    updateRail();
   }
 
-  function updateLangButtons() {
-    document.querySelectorAll('.lang-btn').forEach(btn => {
+  function updateLangChip() {
+    const chipCode = document.getElementById('nav-lang-code');
+    if (chipCode) chipCode.textContent = currentLang.toUpperCase();
+
+    document.querySelectorAll('.lang-option').forEach(btn => {
       btn.classList.toggle('active', btn.dataset.lang === currentLang);
     });
   }
@@ -123,44 +109,52 @@
     saveLangPreference(lang);
     await loadTranslations(lang);
     applyTranslations();
-    updateLangButtons();
+    updateLangChip();
   }
 
-  function initLangSwitcher() {
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
+  /* === Language Picker (bottom-sheet) === */
+  function initLangPicker() {
+    const picker = document.getElementById('lang-picker');
+    const trigger = document.getElementById('nav-lang-chip');
+    if (!picker || !trigger) return;
+
+    function open() {
+      picker.setAttribute('aria-hidden', 'false');
+      trigger.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('lang-picker-open');
+    }
+    function close() {
+      picker.setAttribute('aria-hidden', 'true');
+      trigger.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('lang-picker-open');
+    }
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (picker.getAttribute('aria-hidden') === 'false') close();
+      else open();
+    });
+
+    picker.querySelectorAll('[data-lang-close]').forEach(el => {
+      el.addEventListener('click', close);
+    });
+
+    picker.querySelectorAll('.lang-option').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const lang = btn.dataset.lang;
+        close();
+        await switchLanguage(lang);
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && picker.getAttribute('aria-hidden') === 'false') close();
     });
   }
 
-  /* ========================================================================
-     Hero Language Migration
-     Detects when the prominent hero language strip leaves the viewport,
-     then toggles `body.lang-migrated` so CSS reveals the compact header
-     switcher. Used on landing pages (.hero) and route pages (.lang-hero).
-     ======================================================================== */
-
-  function initLangMigration() {
-    const sentinel =
-      document.querySelector('.lang-hero-sentinel') ||
-      document.querySelector('.lang-bar') ||
-      document.querySelector('.hero');
-    if (!sentinel) return;
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        document.body.classList.toggle('lang-migrated', !entry.isIntersecting);
-      });
-    }, { threshold: 0, rootMargin: '0px 0px -90% 0px' });
-
-    observer.observe(sentinel);
-  }
-
-  /* ========================================================================
-     Segmented Progress Rail
-     ======================================================================== */
-
-  function initSegmentedProgress() {
-    const rail = document.getElementById('progress-rail');
+  /* === Progress Rail === */
+  function initRail() {
+    const rail = document.getElementById('rail');
     if (!rail) return;
     try {
       railSegments = JSON.parse(rail.dataset.segments || '[]');
@@ -187,32 +181,16 @@
     if (stepNumEl) stepNumEl.textContent = String(currentStep);
 
     const active = getCurrentSegment();
-    document.querySelectorAll('.rail-node').forEach(node => {
-      const isActive = active && node.dataset.segment === active.id;
-      const stepThreshold = parseInt(node.dataset.segmentStep, 10);
+    document.querySelectorAll('.rail-seg').forEach(seg => {
+      const isActive = active && seg.dataset.segment === active.id;
+      const stepThreshold = parseInt(seg.dataset.segmentStep, 10);
       const isPassed = currentStep >= stepThreshold;
-      node.classList.toggle('active', !!isActive);
-      node.classList.toggle('passed', isPassed);
+      seg.classList.toggle('active', !!isActive);
+      seg.classList.toggle('passed', isPassed);
     });
-    updateRailSegmentLabel();
   }
 
-  function updateRailSegmentLabel() {
-    const labelEl = document.getElementById('rail-segment-label');
-    if (!labelEl) return;
-    const active = getCurrentSegment();
-    if (!active) {
-      labelEl.textContent = '';
-      return;
-    }
-    const translated = getNestedValue(translations, active.i18nKey);
-    labelEl.textContent = translated || active.label || '';
-  }
-
-  /* ========================================================================
-     Navigation Module (Route Pages)
-     ======================================================================== */
-
+  /* === Navigation (steps on route pages) === */
   function initNavigation() {
     const stepsContainer = document.querySelector('.steps');
     if (!stepsContainer) return;
@@ -247,9 +225,7 @@
             highlightDrawerItem();
             if (btnPrev) btnPrev.disabled = currentStep <= 1;
             if (btnNext) btnNext.disabled = currentStep >= totalSteps;
-            if (ttsAutoEnabled && previousStep !== stepNum) {
-              speakStep(entry.target);
-            }
+            if (ttsAutoEnabled && previousStep !== stepNum) speakStep(entry.target);
           }
         }
       });
@@ -259,27 +235,17 @@
 
     function scrollToStep(num) {
       const target = document.getElementById('step-' + num);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
     window.__amalfiScrollToStep = scrollToStep;
 
-    if (btnPrev) {
-      btnPrev.addEventListener('click', () => {
-        if (currentStep > 1) scrollToStep(currentStep - 1);
-      });
-    }
-
-    if (btnNext) {
-      btnNext.addEventListener('click', () => {
-        if (currentStep < totalSteps) scrollToStep(currentStep + 1);
-      });
-    }
+    if (btnPrev) btnPrev.addEventListener('click', () => { if (currentStep > 1) scrollToStep(currentStep - 1); });
+    if (btnNext) btnNext.addEventListener('click', () => { if (currentStep < totalSteps) scrollToStep(currentStep + 1); });
 
     document.addEventListener('keydown', (e) => {
-      // Don't hijack arrow keys when a dialog/drawer is open
       if (document.body.classList.contains('drawer-open')) return;
+      if (document.body.classList.contains('lang-picker-open')) return;
+      if (document.body.classList.contains('lightbox-open')) return;
       if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
         e.preventDefault();
         if (currentStep > 1) scrollToStep(currentStep - 1);
@@ -294,9 +260,7 @@
   }
 
   function saveScrollPosition(routeId) {
-    try {
-      sessionStorage.setItem(SCROLL_KEY_PREFIX + routeId, String(currentStep));
-    } catch (e) { /* ignore */ }
+    try { sessionStorage.setItem(SCROLL_KEY_PREFIX + routeId, String(currentStep)); } catch (e) {}
   }
 
   function restoreScrollPosition(routeId) {
@@ -315,13 +279,10 @@
           }, 100);
         }
       }
-    } catch (e) { /* ignore */ }
+    } catch (e) {}
   }
 
-  /* ========================================================================
-     Steps Drawer (bottom-sheet step navigator)
-     ======================================================================== */
-
+  /* === Steps Drawer === */
   function initStepsDrawer() {
     const drawer = document.getElementById('steps-drawer');
     const fab = document.getElementById('drawer-fab');
@@ -331,22 +292,18 @@
       drawer.setAttribute('aria-hidden', 'false');
       document.body.classList.add('drawer-open');
       highlightDrawerItem();
-      // Scroll the active item into view inside the drawer
       requestAnimationFrame(() => {
         const active = drawer.querySelector('.drawer-item.active');
         if (active) active.scrollIntoView({ block: 'center' });
       });
     }
-
     function close() {
       drawer.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('drawer-open');
     }
 
     fab.addEventListener('click', open);
-    drawer.querySelectorAll('[data-drawer-close]').forEach(el => {
-      el.addEventListener('click', close);
-    });
+    drawer.querySelectorAll('[data-drawer-close]').forEach(el => el.addEventListener('click', close));
 
     drawer.querySelectorAll('.drawer-item').forEach(item => {
       item.addEventListener('click', () => {
@@ -357,19 +314,14 @@
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && document.body.classList.contains('drawer-open')) {
-        close();
-      }
+      if (e.key === 'Escape' && document.body.classList.contains('drawer-open')) close();
     });
 
-    // Swipe down on handle to close
     const sheet = drawer.querySelector('.drawer-sheet');
     const handle = drawer.querySelector('.drawer-handle');
     if (handle && sheet) {
       let startY = null;
-      handle.addEventListener('touchstart', (e) => {
-        startY = e.touches[0].clientY;
-      }, { passive: true });
+      handle.addEventListener('touchstart', (e) => { startY = e.touches[0].clientY; }, { passive: true });
       handle.addEventListener('touchmove', (e) => {
         if (startY === null) return;
         const dy = e.touches[0].clientY - startY;
@@ -393,10 +345,7 @@
     });
   }
 
-  /* ========================================================================
-     TTS — Web Speech API
-     ======================================================================== */
-
+  /* === TTS === */
   function ttsSupported() {
     return typeof window.speechSynthesis !== 'undefined' && typeof window.SpeechSynthesisUtterance !== 'undefined';
   }
@@ -419,8 +368,6 @@
     utter.lang = langCode;
     const voice = pickVoice(langCode);
     if (voice) utter.voice = voice;
-    utter.rate = 1.0;
-    utter.pitch = 1.0;
     window.speechSynthesis.speak(utter);
   }
 
@@ -433,70 +380,54 @@
 
   function initTTS() {
     if (!ttsSupported()) {
-      // Hide TTS controls if unsupported
-      document.querySelectorAll('.step-tts, .header-tts-toggle').forEach(el => el.style.display = 'none');
+      document.querySelectorAll('.step-tts, .nav-tts').forEach(el => el.style.display = 'none');
       return;
     }
 
-    // Per-step buttons
     document.querySelectorAll('.step-tts').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
         const step = btn.closest('.step');
         if (!step) return;
-        if (window.speechSynthesis.speaking) {
-          window.speechSynthesis.cancel();
-        } else {
-          speakStep(step);
-        }
+        if (window.speechSynthesis.speaking) window.speechSynthesis.cancel();
+        else speakStep(step);
       });
     });
 
-    // Header auto-read toggle
     const toggle = document.getElementById('tts-toggle');
     if (toggle) {
       ttsAutoEnabled = getCookie(TTS_AUTO_COOKIE) === '1';
       toggle.classList.toggle('active', ttsAutoEnabled);
+      toggle.setAttribute('aria-pressed', String(ttsAutoEnabled));
       toggle.addEventListener('click', () => {
         ttsAutoEnabled = !ttsAutoEnabled;
         setCookie(TTS_AUTO_COOKIE, ttsAutoEnabled ? '1' : '0');
         toggle.classList.toggle('active', ttsAutoEnabled);
+        toggle.setAttribute('aria-pressed', String(ttsAutoEnabled));
         if (!ttsAutoEnabled) window.speechSynthesis.cancel();
       });
     }
 
-    // Voices may load asynchronously
     if (window.speechSynthesis.onvoiceschanged !== undefined) {
       window.speechSynthesis.onvoiceschanged = () => { /* warmup */ };
     }
   }
 
-  /* ========================================================================
-     PDF Download Module
-     ======================================================================== */
-
+  /* === PDF === */
   function initPdfDownload() {
     const btn = document.getElementById('btn-pdf');
     if (!btn) return;
-
     const stepsContainer = document.querySelector('.steps');
     if (!stepsContainer) return;
-
     const routeId = stepsContainer.dataset.route;
-
     btn.addEventListener('click', () => {
-      const pdfUrl = `/pdf/${routeId}-${currentLang}.pdf`;
-      window.open(pdfUrl, '_blank');
+      window.open(`/pdf/${routeId}-${currentLang}.pdf`, '_blank');
     });
   }
 
-  /* ========================================================================
-     Service Worker / Offline Module
-     ======================================================================== */
-
+  /* === Service Worker / Offline === */
   function initServiceWorker() {
     if (!('serviceWorker' in navigator)) return;
-
     navigator.serviceWorker.register('/sw.js')
       .then(reg => { console.log('SW registered:', reg.scope); })
       .catch(err => { console.warn('SW registration failed:', err); });
@@ -507,7 +438,6 @@
       const text = document.getElementById('offline-text');
       const progressBar = document.getElementById('download-progress');
       const progressFill = document.getElementById('download-progress-fill');
-
       if (!banner) return;
 
       if (type === 'CACHE_PROGRESS') {
@@ -517,7 +447,6 @@
         if (progressBar) progressBar.style.display = 'block';
         if (progressFill) progressFill.style.width = progress + '%';
       }
-
       if (type === 'CACHE_COMPLETE') {
         banner.classList.add('visible');
         banner.classList.remove('downloading');
@@ -528,16 +457,13 @@
     });
   }
 
-  /* ========================================================================
-     Copy to Clipboard
-     ======================================================================== */
-
+  /* === Copy to Clipboard === */
   function initCopyButtons() {
     document.querySelectorAll('[data-copy]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var text = btn.dataset.copy;
-        var span = btn.querySelector('span');
-        var original = span.textContent;
+        const text = btn.dataset.copy;
+        const span = btn.querySelector('span');
+        const original = span.textContent;
         navigator.clipboard.writeText(text).then(function () {
           span.textContent = 'Copied!';
           setTimeout(function () { span.textContent = original; }, 2000);
@@ -546,35 +472,41 @@
     });
   }
 
-  /* ========================================================================
-     Init
-     ======================================================================== */
+  /* === Nav scroll state (landing: overlay → solid once content scrolls up) === */
+  function initNavScrollState() {
+    const nav = document.getElementById('nav');
+    if (!nav || !nav.classList.contains('nav--overlay')) return;
 
+    function update() {
+      const solid = window.scrollY > 80;
+      nav.classList.toggle('nav--solid', solid);
+    }
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+  }
+
+  /* === Init === */
   async function init() {
     currentLang = detectLanguage();
 
-    initLangSwitcher();
-    updateLangButtons();
     await loadTranslations(currentLang);
 
-    initSegmentedProgress();
+    initRail();
+    initLangPicker();
     applyTranslations();
+    updateLangChip();
     initLucideIcons();
 
-    initLangMigration();
     initNavigation();
     initStepsDrawer();
     initTTS();
     initPdfDownload();
     initCopyButtons();
+    initNavScrollState();
 
     initServiceWorker();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();

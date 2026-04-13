@@ -708,8 +708,16 @@ button {
    ROUTE PAGES
    ========================================================================== */
 
-/* --- Route Header (compact, no site title) --- */
-.route-header {
+/* ==========================================================================
+   NAV — single unified top bar (route pages + landing pages)
+   ========================================================================== */
+
+:root {
+  --nav-height: 56px;
+  --rail-height: 62px;
+}
+
+.nav {
   position: sticky;
   top: 0;
   z-index: 100;
@@ -717,177 +725,246 @@ button {
   align-items: center;
   justify-content: space-between;
   gap: var(--spacing-sm);
-  height: var(--header-height);
-  padding: 0 var(--spacing-md);
+  height: var(--nav-height);
+  padding: 0 12px;
   padding-top: env(safe-area-inset-top);
   background: rgba(250, 246, 241, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--color-border-light);
 }
 
-.back-link {
+/* Landing pages: overlay on the hero image with dark glass, no harsh border */
+.nav--overlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background: rgba(28, 46, 58, 0);
+  border-bottom: 1px solid transparent;
+  transition: background 0.25s ease, border-color 0.25s ease, backdrop-filter 0.25s ease;
+}
+
+.nav--overlay.nav--solid {
+  background: rgba(250, 246, 241, 0.92);
+  border-bottom: 1px solid var(--color-border-light);
+}
+
+.nav--overlay .nav-btn,
+.nav--overlay .nav-lang-chip {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.nav--overlay.nav--solid .nav-btn,
+.nav--overlay.nav--solid .nav-lang-chip {
+  color: var(--color-text);
+  background: rgba(28, 46, 58, 0.06);
+  border-color: transparent;
+}
+
+.nav-right {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xs);
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--color-accent);
-  min-height: var(--touch-target);
-  min-width: var(--touch-target);
-  padding: 0 var(--spacing-sm);
+  gap: 8px;
 }
 
-.back-link:hover { color: var(--color-accent-hover); }
-.back-link .lucide { width: 20px; height: 20px; }
-
-/* Header lang switcher: hidden until the prominent hero strip scrolls past */
-.route-header .lang-switcher {
-  background: rgba(28, 46, 58, 0.06);
-  padding: 3px;
-  opacity: 0;
-  transform: translateY(-4px);
-  pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
-body.lang-migrated .route-header .lang-switcher {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-.route-header .lang-btn {
-  color: var(--color-text-secondary);
-  font-size: 13px;
-  padding: 6px 10px;
-  min-width: 40px;
-  min-height: 36px;
-}
-
-.route-header .lang-btn:hover,
-.route-header .lang-btn:focus-visible {
-  color: var(--color-text);
-  background: rgba(28, 46, 58, 0.08);
-}
-
-.route-header .lang-btn.active {
-  color: var(--color-surface);
-  background: var(--color-accent);
-}
-
-/* TTS auto-read toggle in header */
-.header-tts-toggle {
-  display: flex;
+.nav-btn {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 40px;
   height: 40px;
   min-width: 40px;
   border-radius: 100px;
-  color: var(--color-text-secondary);
+  color: var(--color-text);
   background: transparent;
-  transition: color 0.2s ease, background 0.2s ease;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
-.header-tts-toggle:hover,
-.header-tts-toggle:focus-visible {
-  color: var(--color-text);
+.nav-btn:hover,
+.nav-btn:focus-visible {
   background: rgba(28, 46, 58, 0.06);
 }
 
-.header-tts-toggle.active {
-  color: #fff;
-  background: var(--color-accent);
+.nav-btn .lucide,
+.nav-btn svg {
+  width: 22px;
+  height: 22px;
 }
 
-.header-tts-toggle svg { width: 18px; height: 18px; }
+.nav-back { color: var(--color-accent); }
 
-/* --- Language Hero (route pages: prominent first-paint strip) --- */
-.lang-hero {
+/* Language chip: always visible — globe + code + caret */
+.nav-lang-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+  background: rgba(28, 46, 58, 0.06);
+  border: 1px solid transparent;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nav-lang-chip:hover,
+.nav-lang-chip:focus-visible {
+  background: rgba(28, 46, 58, 0.1);
+}
+
+.nav-lang-chip svg { width: 16px; height: 16px; stroke-width: 2; }
+.nav-lang-chip svg:last-child { width: 12px; height: 12px; opacity: 0.6; }
+
+.nav-lang-code { letter-spacing: 0.06em; }
+
+/* TTS toggle in nav */
+.nav-tts {
+  color: var(--color-text-secondary);
+}
+.nav-tts.active {
+  color: #fff;
+  background: var(--color-accent) !important;
+}
+.nav--overlay .nav-tts.active {
+  color: #fff;
+  background: var(--color-accent) !important;
+  border-color: transparent;
+}
+
+/* ==========================================================================
+   LANGUAGE PICKER — bottom-sheet triggered by nav chip
+   ========================================================================== */
+
+.lang-picker {
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.lang-picker[aria-hidden="false"] { pointer-events: auto; }
+
+.lang-picker-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(28, 46, 58, 0.55);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.lang-picker[aria-hidden="false"] .lang-picker-backdrop { opacity: 1; }
+
+.lang-picker-sheet {
+  position: relative;
+  background: var(--color-surface);
+  border-radius: 24px 24px 0 0;
+  padding: 8px 16px calc(20px + env(safe-area-inset-bottom));
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 -8px 40px rgba(28, 46, 58, 0.2);
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+.lang-picker[aria-hidden="false"] .lang-picker-sheet { transform: translateY(0); }
+
+.lang-picker-handle {
+  width: 44px;
+  height: 5px;
+  background: var(--color-border);
+  border-radius: 100px;
+  margin: 8px auto 12px;
+  cursor: grab;
+}
+
+.lang-picker-title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.lang-picker-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.lang-option {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-md) var(--spacing-md);
-  padding-top: calc(var(--spacing-md) + env(safe-area-inset-top));
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border-light);
-  transition: max-height 0.3s ease, opacity 0.25s ease, padding 0.25s ease;
-  max-height: 200px;
-  overflow: hidden;
+  gap: 10px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--color-bg);
+  border: 2px solid transparent;
+  text-align: left;
+  transition: border-color 0.15s ease, background 0.15s ease;
+  min-height: 56px;
 }
 
-.lang-hero-icon {
+.lang-option:hover,
+.lang-option:focus-visible {
+  border-color: var(--color-accent);
+}
+
+.lang-option.active {
+  border-color: var(--color-accent);
+  background: var(--color-accent-light);
+}
+
+.lang-option-code {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 100px;
-  background: var(--color-accent-light);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--color-surface);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   color: var(--color-accent);
-}
-.lang-hero-icon .lucide { width: 18px; height: 18px; }
-
-.lang-hero-label {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--color-text-secondary);
-  margin-right: auto;
+  flex: 0 0 36px;
 }
 
-.lang-switcher--hero {
-  background: rgba(28, 46, 58, 0.06);
-  padding: 3px;
-}
-
-.lang-switcher--hero .lang-btn {
-  color: var(--color-text-secondary);
-  font-size: 14px;
-  font-weight: 700;
-  padding: 8px 14px;
-  min-height: 40px;
-  min-width: 44px;
-}
-
-.lang-switcher--hero .lang-btn:hover,
-.lang-switcher--hero .lang-btn:focus-visible {
-  color: var(--color-text);
-  background: rgba(28, 46, 58, 0.08);
-}
-
-.lang-switcher--hero .lang-btn.active {
-  color: #fff;
+.lang-option.active .lang-option-code {
   background: var(--color-accent);
+  color: #fff;
 }
 
-.lang-hero-sentinel {
-  width: 1px;
-  height: 1px;
+.lang-option-name {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
 }
 
-/* When the hero strip has scrolled past, collapse it visually */
-body.lang-migrated .lang-hero {
-  max-height: 0;
-  opacity: 0;
-  padding-top: 0;
-  padding-bottom: 0;
-  border-bottom-width: 0;
-}
+body.lang-picker-open { overflow: hidden; }
 
-/* --- Segmented Progress Rail --- */
-.progress-rail {
+/* ==========================================================================
+   PROGRESS RAIL — compact segmented indicator below nav
+   ========================================================================== */
+
+.rail {
   position: sticky;
-  top: calc(var(--header-height) + env(safe-area-inset-top));
+  top: calc(var(--nav-height) + env(safe-area-inset-top));
   z-index: 99;
-  background: rgba(250, 246, 241, 0.95);
+  background: rgba(250, 246, 241, 0.96);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--color-border-light);
-  padding: 10px var(--spacing-md) 8px;
+  padding: 8px 16px 10px;
 }
 
 .rail-track {
@@ -896,9 +973,10 @@ body.lang-migrated .lang-hero {
   background: var(--color-border-light);
   border-radius: 100px;
   overflow: hidden;
+  margin-bottom: 10px;
 }
 
-.rail-fill {
+.rail-track-fill {
   position: absolute;
   inset: 0 auto 0 0;
   background: linear-gradient(90deg, #FF5900, #FF7A33);
@@ -907,92 +985,101 @@ body.lang-migrated .lang-hero {
   transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.rail-nodes {
+.rail-content {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin-top: 6px;
-  padding: 0 4px;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-.rail-node {
+.rail-segs {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.rail-seg {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   flex: 0 1 auto;
   min-width: 0;
+  padding: 2px 6px;
+  border-radius: 100px;
+  transition: background 0.2s ease, color 0.2s ease;
 }
 
-.rail-node-dot {
-  width: 10px;
-  height: 10px;
+.rail-seg-dot {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--color-border);
-  border: 2px solid var(--color-bg);
-  transition: background 0.3s ease, transform 0.3s ease;
+  flex: 0 0 7px;
+  transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.rail-node.passed .rail-node-dot {
-  background: var(--color-accent);
-}
+.rail-seg.passed .rail-seg-dot { background: var(--color-accent); }
 
-.rail-node.active .rail-node-dot {
+.rail-seg.active .rail-seg-dot {
   background: var(--color-accent);
   transform: scale(1.4);
   box-shadow: 0 0 0 3px rgba(255, 89, 0, 0.18);
-  animation: railPulse 1.4s ease-in-out infinite;
 }
 
-@keyframes railPulse {
-  0%, 100% { box-shadow: 0 0 0 3px rgba(255, 89, 0, 0.18); }
-  50% { box-shadow: 0 0 0 6px rgba(255, 89, 0, 0.05); }
-}
-
-.rail-node-label {
+.rail-seg-label {
   font-family: var(--font-body);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
   color: var(--color-text-secondary);
   white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 80px;
   overflow: hidden;
-  transition: color 0.3s ease;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  transition: color 0.2s ease;
 }
 
-.rail-node.active .rail-node-label,
-.rail-node.passed .rail-node-label {
-  color: var(--color-text);
+/* On narrow screens hide labels of non-active segments — just show dots. */
+.rail-seg:not(.active) .rail-seg-label {
+  display: none;
 }
 
-.rail-node.active .rail-node-label {
+.rail-seg.active {
+  background: var(--color-accent-light);
+}
+
+.rail-seg.active .rail-seg-label {
   color: var(--color-accent);
   font-weight: 700;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.08em;
 }
 
-.rail-meta {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 4px;
+@media (min-width: 480px) {
+  .rail-seg:not(.active) .rail-seg-label {
+    display: inline;
+  }
+}
+
+.rail-counter {
   font-family: var(--font-body);
-  font-size: 0.78rem;
-  color: var(--color-text-secondary);
-  letter-spacing: 0.02em;
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.rail-meta-segment {
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 700;
   color: var(--color-text);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  flex: 0 0 auto;
 }
 
-.rail-meta-sep { opacity: 0.5; }
+.rail-counter-sep {
+  opacity: 0.4;
+  margin: 0 1px;
+  font-weight: 500;
+}
 
 /* --- Steps Container --- */
 .steps {
@@ -1030,7 +1117,7 @@ body.lang-migrated .lang-hero {
 /* --- Step Card --- */
 .step {
   margin-bottom: var(--spacing-2xl);
-  scroll-margin-top: calc(var(--header-height) + 80px);
+  scroll-margin-top: calc(var(--nav-height) + var(--rail-height) + 12px);
 }
 
 .step-number {
@@ -1444,120 +1531,6 @@ body.lang-migrated .lang-hero {
 }
 
 /* ==========================================================================
-   LANDING — Sticky Header (slides in once hero scrolls past)
-   ========================================================================== */
-
-.landing-sticky-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--spacing-sm);
-  height: var(--header-height);
-  padding: 0 var(--spacing-md);
-  padding-top: env(safe-area-inset-top);
-  background: rgba(250, 246, 241, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--color-border-light);
-  transform: translateY(-110%);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform 0.3s ease, opacity 0.25s ease;
-}
-
-body.lang-migrated .landing-sticky-header {
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.landing-sticky-brand {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--touch-target);
-  height: var(--touch-target);
-  color: var(--color-accent);
-}
-.landing-sticky-brand .lucide { width: 22px; height: 22px; }
-
-.landing-sticky-header .lang-switcher {
-  background: rgba(28, 46, 58, 0.06);
-  padding: 3px;
-}
-.landing-sticky-header .lang-btn {
-  color: var(--color-text-secondary);
-  font-size: 13px;
-  padding: 6px 10px;
-  min-height: 36px;
-  min-width: 40px;
-}
-.landing-sticky-header .lang-btn.active {
-  color: #fff;
-  background: var(--color-accent);
-}
-
-/* --- Prominent Lang Bar (in hero, above headline) --- */
-.lang-bar--prominent {
-  position: static;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  padding: 8px 14px;
-  background: rgba(255, 255, 255, 0.14);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 100px;
-  margin-bottom: var(--spacing-lg);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
-}
-
-.lang-bar--prominent .lang-globe {
-  color: rgba(255, 255, 255, 0.85);
-}
-.lang-bar--prominent .lang-globe .lucide { width: 16px; height: 16px; }
-
-.lang-bar-label {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-.lang-bar--prominent .lang-switcher {
-  background: rgba(28, 46, 58, 0.35);
-  padding: 3px;
-}
-
-.lang-bar--prominent .lang-btn {
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 13px;
-  font-weight: 700;
-  padding: 7px 12px;
-  min-width: 40px;
-  min-height: 36px;
-}
-
-.lang-bar--prominent .lang-btn:hover,
-.lang-bar--prominent .lang-btn:focus-visible {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.lang-bar--prominent .lang-btn.active {
-  color: #fff;
-  background: var(--color-accent);
-}
-
-/* ==========================================================================
    QUICK-JUMP DRAWER (bottom-sheet step navigator)
    ========================================================================== */
 
@@ -1882,97 +1855,15 @@ body.lightbox-open { overflow: hidden; }
 
 .step-tts svg { width: 16px; height: 16px; }
 
-/* ==========================================================================
-   PDF MODE — used by Puppeteer renderer
-   ========================================================================== */
-
-body.pdf-mode .lang-hero,
-body.pdf-mode .lang-hero-sentinel,
-body.pdf-mode .route-header,
-body.pdf-mode .route-footer,
-body.pdf-mode .progress-rail,
-body.pdf-mode .drawer-fab,
-body.pdf-mode .drawer,
-body.pdf-mode .step-tts,
-body.pdf-mode .step-badge,
-body.pdf-mode .header-tts-toggle,
-body.pdf-mode .offline-banner {
-  display: none !important;
-}
-
-body.pdf-mode .steps {
-  padding: 24pt 16pt 0;
-  max-width: none;
-}
-
-body.pdf-mode .step {
-  page-break-inside: avoid;
-  break-inside: avoid;
-  margin-bottom: 18pt;
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-body.pdf-mode .step-photo {
-  box-shadow: none;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  animation: none;
-  background: #fff;
-  max-width: 360px;
-  margin: 0 auto;
-}
-
-body.pdf-mode .step-photo img {
-  width: 100%;
-  height: auto;
-  image-rendering: auto;
-}
-
-body.pdf-mode .step-caption {
-  margin-top: 12pt;
-  margin-left: 0;
-  margin-right: 0;
-  border: none;
-  box-shadow: none;
-  padding: 6pt 0 0;
-  font-size: 11pt;
-  line-height: 1.45;
-}
-
-body.pdf-mode .step-number {
-  font-size: 9pt;
-  margin-bottom: 8pt;
-}
-
-body.pdf-mode .arrival-card {
-  page-break-before: always;
-  break-before: page;
-}
-
-body.pdf-mode .segment-divider {
-  page-break-after: avoid;
-  break-after: avoid;
-  padding: 18pt 0 6pt;
-}
-
-body.pdf-mode {
-  background: white;
-  color: black;
-}
-
 /* --- Print Styles (browser File > Print) --- */
 @media print {
-  .lang-hero,
-  .lang-hero-sentinel,
-  .route-header,
+  .nav,
+  .rail,
   .route-footer,
-  .progress-rail,
   .drawer-fab,
   .drawer,
+  .lang-picker,
   .step-tts,
-  .header-tts-toggle,
-  .lang-bar,
   .offline-banner {
     display: none !important;
   }

@@ -29,16 +29,17 @@
   <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body class="landing-body-root">
-  <header class="landing-sticky-header">
-    <a href="/" class="landing-sticky-brand" aria-label="Home">
-      <i data-lucide="map-pin"></i>
+  <header class="nav nav--overlay" id="nav">
+    <a href="/" class="nav-btn nav-home" aria-label="Home">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
     </a>
-    <nav class="lang-switcher" aria-label="Language">
-      <button class="lang-btn" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="it">IT</button>
-      <button class="lang-btn" data-lang="de">DE</button>
-      <button class="lang-btn" data-lang="fr">FR</button>
-    </nav>
+    <div class="nav-right">
+      <button type="button" class="nav-lang-chip" id="nav-lang-chip" aria-label="Change language" aria-haspopup="dialog" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <span class="nav-lang-code" id="nav-lang-code">EN</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+    </div>
   </header>
 
   <section class="hero hero--full">
@@ -50,16 +51,6 @@
     </div>
     <div class="hero-scrim hero-scrim--full"></div>
     <div class="hero-center">
-      <div class="lang-bar lang-bar--prominent">
-        <span class="lang-globe"><i data-lucide="globe"></i></span>
-        <span class="lang-bar-label" data-i18n="common.language">Language</span>
-        <nav class="lang-switcher lang-switcher--hero" aria-label="Language">
-          <button class="lang-btn" data-lang="en">EN</button>
-          <button class="lang-btn" data-lang="it">IT</button>
-          <button class="lang-btn" data-lang="de">DE</button>
-          <button class="lang-btn" data-lang="fr">FR</button>
-        </nav>
-      </div>
       <div class="hero-card">
         <p class="hero-eyebrow" data-i18n="house.subtitle">Step-by-step walking guide</p>
       </div>
@@ -121,6 +112,20 @@
   <footer class="landing-footer">
     <a href="https://amalfi.day">Powered by amalfi.day</a>
   </footer>
+
+  <div class="lang-picker" id="lang-picker" aria-hidden="true" role="dialog" aria-label="Language">
+    <div class="lang-picker-backdrop" data-lang-close></div>
+    <div class="lang-picker-sheet">
+      <div class="lang-picker-handle" data-lang-close></div>
+      <h3 class="lang-picker-title" data-i18n="common.pick_language">Language</h3>
+      <div class="lang-picker-list">
+        <button type="button" class="lang-option" data-lang="en"><span class="lang-option-code">EN</span><span class="lang-option-name">English</span></button>
+        <button type="button" class="lang-option" data-lang="it"><span class="lang-option-code">IT</span><span class="lang-option-name">Italiano</span></button>
+        <button type="button" class="lang-option" data-lang="de"><span class="lang-option-code">DE</span><span class="lang-option-name">Deutsch</span></button>
+        <button type="button" class="lang-option" data-lang="fr"><span class="lang-option-code">FR</span><span class="lang-option-name">Français</span></button>
+      </div>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script src="/js/app.js"></script>

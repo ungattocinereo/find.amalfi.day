@@ -9,14 +9,61 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
 
-// Inline SVG for map-pin (avoids FOUC before Lucide loads)
+const ARROW_LEFT_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>`;
+
+const GLOBE_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>`;
+
+const CHEVRON_DOWN_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide"><path d="m6 9 6 6 6-6"/></svg>`;
+
+const VOLUME_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
+
+const VOLUME_SMALL_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>`;
+
 const MAP_PIN_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>`;
 
-// Inline SVG for arrow-left (back button, avoids FOUC)
-const ARROW_LEFT_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>`;
+// Language picker options — native names so users recognize their own language.
+const LANG_OPTIONS = [
+  { code: 'en', native: 'English' },
+  { code: 'it', native: 'Italiano' },
+  { code: 'de', native: 'Deutsch' },
+  { code: 'fr', native: 'Français' },
+];
 
-// Inline SVG for volume icon (TTS button, avoids FOUC)
-const VOLUME_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>`;
+function langPickerMarkup() {
+  const options = LANG_OPTIONS.map(l => `        <button type="button" class="lang-option" data-lang="${l.code}">
+          <span class="lang-option-code">${l.code.toUpperCase()}</span>
+          <span class="lang-option-name">${l.native}</span>
+        </button>`).join('\n');
+  return `  <div class="lang-picker" id="lang-picker" aria-hidden="true" role="dialog" aria-label="Language">
+    <div class="lang-picker-backdrop" data-lang-close></div>
+    <div class="lang-picker-sheet">
+      <div class="lang-picker-handle" data-lang-close></div>
+      <h3 class="lang-picker-title" data-i18n="common.pick_language">Language</h3>
+      <div class="lang-picker-list">
+${options}
+      </div>
+    </div>
+  </div>`;
+}
+
+function navHeaderMarkup({ backUrl, routeMode }) {
+  const backAria = routeMode ? 'Back to home' : 'Home';
+  return `  <header class="nav" id="nav">
+    <a href="${backUrl}" class="nav-btn nav-back" aria-label="${backAria}">
+      ${ARROW_LEFT_SVG}
+    </a>
+    <div class="nav-right">
+      <button type="button" class="nav-lang-chip" id="nav-lang-chip" aria-label="Change language" aria-haspopup="dialog" aria-expanded="false">
+        ${GLOBE_SVG}
+        <span class="nav-lang-code" id="nav-lang-code">EN</span>
+        ${CHEVRON_DOWN_SVG}
+      </button>${routeMode ? `
+      <button type="button" class="nav-btn nav-tts" id="tts-toggle" aria-label="Toggle auto-narration" aria-pressed="false">
+        ${VOLUME_SVG}
+      </button>` : ''}
+    </div>
+  </header>`;
+}
 
 const routes = [
   {
@@ -29,8 +76,6 @@ const routes = [
       { id: 'seg-a', count: 13, label: null },
       { id: 'seg-b', count: 20, imgStart: 1, dividerKey: 'common.now_in_atrani', dividerText: 'You are now entering Atrani' },
     ],
-    // Rail nodes shown in the segmented progress indicator.
-    // `step` is the step number that activates this node.
     railSegments: [
       { id: 'amalfi', i18nKey: 'rail.amalfi', label: 'Amalfi', step: 1 },
       { id: 'atrani', i18nKey: 'rail.atrani', label: 'Atrani', step: 14 },
@@ -91,10 +136,10 @@ function generateStepCard(stepNum, totalSteps, segId, imgNum) {
   const imgPad = pad(imgNum);
   return `      <article class="step" id="step-${stepNum}" data-step="${stepNum}">
         <div class="step-number">
-          <i data-lucide="map-pin"></i>
+          ${MAP_PIN_SVG}
           <span data-i18n="common.step">Step</span> ${stepNum} <span data-i18n="common.of">of</span> ${totalSteps}
-          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud" data-tts-target="steps.${segId}.${imgPad}.caption">
-            ${VOLUME_SVG}
+          <button type="button" class="step-tts" aria-label="Read aloud" data-i18n-aria="common.read_aloud">
+            ${VOLUME_SMALL_SVG}
           </button>
         </div>
         <div class="step-photo" data-step-index="${stepNum}">
@@ -111,7 +156,7 @@ function generateStepCard(stepNum, totalSteps, segId, imgNum) {
       </article>`;
 }
 
-function generateDrawerItems(route, totalSteps) {
+function generateDrawerItems(route) {
   let items = '';
   let stepNum = 0;
   for (const seg of route.segments) {
@@ -154,25 +199,14 @@ function generatePage(route) {
   }
 
   const railSegmentsJson = JSON.stringify(route.railSegments).replace(/'/g, '&#39;');
-  const railNodesHtml = route.railSegments.map((s, i) => {
-    return `      <div class="rail-node" data-segment="${s.id}" data-segment-step="${s.step}">
-        <span class="rail-node-dot"></span>
-        <span class="rail-node-label" data-i18n="${s.i18nKey}">${s.label}</span>
-      </div>`;
+  const railNodesHtml = route.railSegments.map((s) => {
+    return `        <div class="rail-seg" data-segment="${s.id}" data-segment-step="${s.step}">
+          <span class="rail-seg-dot"></span>
+          <span class="rail-seg-label" data-i18n="${s.i18nKey}">${s.label}</span>
+        </div>`;
   }).join('\n');
 
-  const drawerItems = generateDrawerItems(route, totalSteps);
-
-  const langButtons = `      <button class="lang-btn" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="it">IT</button>
-      <button class="lang-btn" data-lang="de">DE</button>
-      <button class="lang-btn" data-lang="fr">FR</button>`;
-  const headerLangSwitcher = `<nav class="lang-switcher" aria-label="Language">
-${langButtons}
-    </nav>`;
-  const heroLangSwitcher = `<nav class="lang-switcher lang-switcher--hero" aria-label="Language">
-${langButtons}
-    </nav>`;
+  const drawerItems = generateDrawerItems(route);
 
   return `<!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -203,37 +237,19 @@ ${langButtons}
   <script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body class="route-body">
-  <!-- Prominent language hero strip — visible only at top of page -->
-  <div class="lang-hero" id="lang-hero">
-    <span class="lang-hero-icon"><i data-lucide="globe"></i></span>
-    <span class="lang-hero-label" data-i18n="common.language">Language</span>
-    ${heroLangSwitcher}
-  </div>
-  <!-- Sentinel observed by JS to detect when lang-hero has scrolled out of view -->
-  <div class="lang-hero-sentinel" aria-hidden="true"></div>
+${navHeaderMarkup({ backUrl: route.backUrl, routeMode: true })}
 
-  <header class="route-header">
-    <a href="${route.backUrl}" class="back-link" aria-label="Back">
-      ${ARROW_LEFT_SVG}
-      <span data-i18n="common.back">Back</span>
-    </a>
-    ${headerLangSwitcher}
-    <button type="button" class="header-tts-toggle" id="tts-toggle" aria-label="Toggle auto-narration" data-i18n-aria="common.toggle_auto_read">
-      ${VOLUME_SVG}
-    </button>
-  </header>
-
-  <div class="progress-rail" id="progress-rail" data-segments='${railSegmentsJson}'>
+  <div class="rail" id="rail" data-segments='${railSegmentsJson}'>
     <div class="rail-track">
-      <div class="rail-fill" id="rail-fill"></div>
+      <div class="rail-track-fill" id="rail-fill"></div>
     </div>
-    <div class="rail-nodes">
+    <div class="rail-content">
+      <div class="rail-segs">
 ${railNodesHtml}
-    </div>
-    <div class="rail-meta">
-      <span class="rail-meta-step"><span data-i18n="common.step">Step</span> <span id="rail-step-num">1</span> <span data-i18n="common.of">of</span> ${totalSteps}</span>
-      <span class="rail-meta-sep">·</span>
-      <span class="rail-meta-segment" id="rail-segment-label"></span>
+      </div>
+      <div class="rail-counter">
+        <span id="rail-step-num">1</span><span class="rail-counter-sep">/</span>${totalSteps}
+      </div>
     </div>
   </div>
 
@@ -266,6 +282,8 @@ ${drawerItems}      </div>
     </div>
   </div>
 
+${langPickerMarkup()}
+
   <footer class="route-footer">
     <button class="btn-nav btn-prev" id="btn-prev" disabled>
       <i data-lucide="chevron-left"></i> <span data-i18n="common.prev">Back</span>
@@ -294,5 +312,8 @@ for (const route of routes) {
   writeFileSync(outPath, html, 'utf-8');
   console.log(`Generated: ${route.file} (${route.segments.reduce((s, seg) => s + seg.count, 0)} steps)`);
 }
+
+// Expose helpers for landing pages (they'll hand-inject the same nav)
+export { navHeaderMarkup, langPickerMarkup };
 
 console.log('\nDone!');
