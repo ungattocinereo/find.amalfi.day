@@ -3,7 +3,7 @@
    Cache-first strategy with aggressive precaching
    ========================================================================== */
 
-const CACHE_VERSION = 'find-amalfi-v8';
+const CACHE_VERSION = 'find-amalfi-v9';
 
 /* --- Asset list to precache --- */
 const PRECACHE_URLS = [
@@ -115,6 +115,13 @@ self.addEventListener('fetch', (event) => {
 
   // Skip cross-origin requests (e.g., CDN scripts — let browser handle)
   if (!event.request.url.startsWith(self.location.origin)) return;
+
+  // Never cache PDFs — always fetch fresh from network, bypass HTTP cache too
+  const url = new URL(event.request.url);
+  if (url.pathname.startsWith('/pdf/')) {
+    event.respondWith(fetch(event.request, { cache: 'no-store' }));
+    return;
+  }
 
   event.respondWith(
     caches.match(event.request).then(cached => {
