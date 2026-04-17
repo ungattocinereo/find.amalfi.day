@@ -20,6 +20,15 @@
   let railSegments = [];
   let ttsAutoEnabled = false;
 
+  /* === Haptics === */
+  function haptic(ms) {
+    try {
+      if (typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function') {
+        navigator.vibrate(ms);
+      }
+    } catch (_) { /* no-op (iOS, unsupported) */ }
+  }
+
   /* === Icons === */
   function initLucideIcons() {
     if (typeof lucide !== 'undefined' && lucide.createIcons) lucide.createIcons();
@@ -142,6 +151,7 @@
     picker.querySelectorAll('.lang-option').forEach(btn => {
       btn.addEventListener('click', async () => {
         const lang = btn.dataset.lang;
+        haptic(8);
         close();
         await switchLanguage(lang);
       });
@@ -175,10 +185,13 @@
   function updateRail() {
     const fill = document.getElementById('rail-fill');
     const stepNumEl = document.getElementById('rail-step-num');
-    if (fill && totalSteps > 0) {
-      fill.style.width = ((currentStep - 1) / Math.max(totalSteps - 1, 1) * 100) + '%';
-    }
+    const footerNumEl = document.getElementById('footer-step-num');
+    const footerFill = document.getElementById('footer-steps-fill');
+    const progressPct = totalSteps > 0 ? ((currentStep - 1) / Math.max(totalSteps - 1, 1) * 100) : 0;
+    if (fill && totalSteps > 0) fill.style.width = progressPct + '%';
+    if (footerFill && totalSteps > 0) footerFill.style.width = progressPct + '%';
     if (stepNumEl) stepNumEl.textContent = String(currentStep);
+    if (footerNumEl) footerNumEl.textContent = String(currentStep);
 
     const active = getCurrentSegment();
     document.querySelectorAll('.rail-seg').forEach(seg => {
@@ -239,8 +252,8 @@
     }
     window.__amalfiScrollToStep = scrollToStep;
 
-    if (btnPrev) btnPrev.addEventListener('click', () => { if (currentStep > 1) scrollToStep(currentStep - 1); });
-    if (btnNext) btnNext.addEventListener('click', () => { if (currentStep < totalSteps) scrollToStep(currentStep + 1); });
+    if (btnPrev) btnPrev.addEventListener('click', () => { if (currentStep > 1) { haptic(10); scrollToStep(currentStep - 1); } });
+    if (btnNext) btnNext.addEventListener('click', () => { if (currentStep < totalSteps) { haptic(10); scrollToStep(currentStep + 1); } });
 
     document.addEventListener('keydown', (e) => {
       if (document.body.classList.contains('drawer-open')) return;
@@ -255,8 +268,55 @@
       }
     });
 
+    initSwipeNav(scrollToStep);
+
     restoreScrollPosition(routeId);
     updateRail();
+  }
+
+  /* === Horizontal swipe on step photos → prev/next step === */
+  function initSwipeNav(scrollToStep) {
+    if (typeof matchMedia === 'function' && !matchMedia('(pointer: coarse)').matches) return;
+    const photos = document.querySelectorAll('.step-photo');
+    if (!photos.length) return;
+
+    const THRESHOLD = 60;
+    photos.forEach(photo => {
+      let startX = 0, startY = 0, active = false, swiped = false, pointerId = null;
+
+      photo.addEventListener('pointerdown', (e) => {
+        if (e.pointerType === 'mouse') return;
+        pointerId = e.pointerId;
+        startX = e.clientX;
+        startY = e.clientY;
+        active = true;
+        swiped = false;
+      });
+
+      photo.addEventListener('pointerup', (e) => {
+        if (!active || e.pointerId !== pointerId) return;
+        active = false;
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+        if (Math.abs(dx) > THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+          swiped = true;
+          haptic(10);
+          if (dx < 0 && currentStep < totalSteps) scrollToStep(currentStep + 1);
+          else if (dx > 0 && currentStep > 1) scrollToStep(currentStep - 1);
+        }
+      });
+
+      photo.addEventListener('pointercancel', () => { active = false; });
+
+      // Suppress the synthetic click that follows a swipe so lightbox doesn't open.
+      photo.addEventListener('click', (e) => {
+        if (swiped) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          swiped = false;
+        }
+      }, true);
+    });
   }
 
   function saveScrollPosition(routeId) {
@@ -285,8 +345,8 @@
   /* === Steps Drawer === */
   function initStepsDrawer() {
     const drawer = document.getElementById('steps-drawer');
-    const fab = document.getElementById('drawer-fab');
-    if (!drawer || !fab) return;
+    const trigger = document.getElementById('btn-steps') || document.getElementById('drawer-fab');
+    if (!drawer || !trigger) return;
 
     function open() {
       drawer.setAttribute('aria-hidden', 'false');
@@ -302,7 +362,7 @@
       document.body.classList.remove('drawer-open');
     }
 
-    fab.addEventListener('click', open);
+    trigger.addEventListener('click', () => { haptic(8); open(); });
     drawer.querySelectorAll('[data-drawer-close]').forEach(el => el.addEventListener('click', close));
 
     drawer.querySelectorAll('.drawer-item').forEach(item => {
@@ -401,6 +461,7 @@
       toggle.setAttribute('aria-pressed', String(ttsAutoEnabled));
       toggle.addEventListener('click', () => {
         ttsAutoEnabled = !ttsAutoEnabled;
+        haptic(8);
         setCookie(TTS_AUTO_COOKIE, ttsAutoEnabled ? '1' : '0');
         toggle.classList.toggle('active', ttsAutoEnabled);
         toggle.setAttribute('aria-pressed', String(ttsAutoEnabled));

@@ -361,16 +361,14 @@
     </div>
   </main>
 
-  <button type="button" class="drawer-fab" id="drawer-fab" aria-label="Show all steps" data-i18n-aria="common.steps_drawer">
-    <i data-lucide="list"></i>
-    <span data-i18n="common.steps">Steps</span>
-  </button>
-
   <div class="drawer" id="steps-drawer" aria-hidden="true" role="dialog" aria-label="All steps">
     <div class="drawer-backdrop" data-drawer-close></div>
     <div class="drawer-sheet">
       <div class="drawer-handle" data-drawer-close></div>
       <div class="drawer-header">
+        <button type="button" class="drawer-pdf" id="btn-pdf" title="Download PDF" aria-label="Download PDF">
+          <i data-lucide="download"></i> <span data-i18n="common.download_pdf">PDF</span>
+        </button>
         <h3 class="drawer-title" data-i18n="common.all_steps">All steps</h3>
         <button type="button" class="drawer-close" aria-label="Close" data-drawer-close>
           <i data-lucide="x"></i>
@@ -556,14 +554,15 @@
   </div>
 
   <footer class="route-footer">
-    <button class="btn-nav btn-prev" id="btn-prev" disabled>
-      <i data-lucide="chevron-left"></i> <span data-i18n="common.prev">Back</span>
+    <button class="footer-icon-btn" id="btn-prev" aria-label="Previous step" data-i18n-aria="common.prev" disabled>
+      <i data-lucide="chevron-left"></i>
     </button>
-    <button class="btn-download" id="btn-pdf" title="Download PDF">
-      <i data-lucide="download"></i> <span data-i18n="common.download_pdf">PDF</span>
+    <button class="footer-steps" id="btn-steps" aria-label="Show all steps" data-i18n-aria="common.steps_drawer">
+      <span class="footer-steps-counter"><span id="footer-step-num">1</span><span class="footer-steps-sep">/</span>14</span>
+      <span class="footer-steps-bar"><span class="footer-steps-bar-fill" id="footer-steps-fill"></span></span>
     </button>
-    <button class="btn-nav btn-next" id="btn-next">
-      <span data-i18n="common.next">Next</span> <i data-lucide="chevron-right"></i>
+    <button class="footer-icon-btn footer-icon-btn--primary" id="btn-next" aria-label="Next step" data-i18n-aria="common.next">
+      <i data-lucide="chevron-right"></i>
     </button>
   </footer>
 
