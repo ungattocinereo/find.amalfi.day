@@ -59,7 +59,6 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
-  scroll-snap-type: y proximity;
 }
 
 body {
@@ -1108,7 +1107,6 @@ body.lang-picker-open { overflow: hidden; }
 .step {
   margin-bottom: var(--spacing-2xl);
   scroll-margin-top: calc(var(--nav-height) + var(--rail-height) + 12px);
-  scroll-snap-align: start;
 }
 
 /* Photo is the horizontal-swipe surface — prevent accidental image drag */
@@ -1973,7 +1971,6 @@ body.lightbox-open { overflow: hidden; }
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
   }
-  .steps { scroll-snap-type: none !important; }
   .step { opacity: 1; transform: none; }
 }
 
