@@ -41,7 +41,7 @@
     "title": "Come trovare Greg's House",
     "subtitle": "Guida passo passo a piedi",
     "tldr": "15 minuti a piedi da Amalfi. Segui la strada costiera attraverso il tunnel fino ad Atrani, poi percorri le stradine del centro fino alla casa.",
-    "porters": "Hai bagagli pesanti? Cerca gli <strong>Amalfi Porters</strong> \u2014 piccoli golf cart disponibili al porto e alla fermata dell\u2019autobus. Per circa \u20ac20 ti porteranno fino alla zona della casa e possono trasportare i bagagli su per i circa 200 gradini fino all\u2019appartamento.",
+    "porters": "Hai bagagli pesanti? Usa gli <strong>Amalfi Porters</strong> \u2014 un servizio di golf cart che ti aspetta direttamente al porto di Amalfi (Porto di Amalfi). Aperto tutti i giorni 6:00\u201320:30. Tariffa indicativa: dal porto di Amalfi alla casa per 2 persone + 2 bagagli \u2248 \u20ac25. Possono anche portare i tuoi bagagli su per i ~200 gradini fino all\u2019appartamento.",
     "time_amalfi": "~15 min a piedi \u00b7 33 passi",
     "time_atrani": "~8 min a piedi \u00b7 21 passi",
     "arrived": "Benvenuto a Greg's House!",
@@ -52,7 +52,7 @@
     "title": "Come trovare il punto d'incontro",
     "subtitle": "Guida passo passo a piedi",
     "tldr": "Cammina da Amalfi attraverso il tunnel costiero fino ad Atrani. Il punto d'incontro si trova subito dopo l'uscita del tunnel, nel centro di Atrani.",
-    "time_amalfi": "~12 min a piedi \u00b7 15 passi",
+    "time_amalfi": "~11 min a piedi \u00b7 14 passi",
     "from_atrani_title": "Da Atrani",
     "from_atrani_desc": "Il punto d'incontro \u00e8 proprio all'uscita del tunnel ad Atrani. Se sei gi\u00e0 ad Atrani, \u00e8 a pochi passi.",
     "arrived": "Hai raggiunto il punto d'incontro!",
@@ -232,11 +232,19 @@
     },
     "seg-c": {
       "01": {
-        "caption": "All'uscita del tunnel vedrai la strada che porta ad Atrani con i cartelli stradali davanti.",
-        "alt": "Uscita del tunnel di Atrani con cartelli stradali e vista sul paese"
+        "caption": "Una bella vista all'ingresso di Atrani. Se arrivi da Amalfi, aspettaci qui \u2014 verremo a prenderti e ti accompagneremo fino all'appartamento.",
+        "alt": "Vista panoramica all'ingresso di Atrani"
       },
       "02": {
-        "caption": "Questo \u00e8 il punto d'incontro! Sei arrivato. Cerca Greg nei dintorni.",
+        "caption": "Passa davanti alla farmacia del paese e continua dritto.",
+        "alt": "Via di Atrani davanti alla farmacia del paese"
+      },
+      "03": {
+        "caption": "Sei quasi al punto d'incontro \u2014 continua cos\u00ec.",
+        "alt": "Stradina di Atrani in avvicinamento al punto d'incontro"
+      },
+      "04": {
+        "caption": "Sei arrivato al punto d'incontro! Cerca Greg nei dintorni.",
         "alt": "Il punto d'incontro nel centro di Atrani"
       }
     }

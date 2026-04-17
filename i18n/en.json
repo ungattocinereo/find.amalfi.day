@@ -41,7 +41,7 @@
     "title": "Finding Greg's House",
     "subtitle": "Step-by-step walking guide",
     "tldr": "15-minute walk from Amalfi. Follow the coastal road through the tunnel to Atrani, then navigate through the charming streets up to the house.",
-    "porters": "Have heavy luggage? Look for <strong>Amalfi Porters</strong> \u2014 small golf carts right at the port and bus stop. For about \u20ac20 they\u2019ll drive you to the house area and can carry your bags up the ~200 steps to the apartment.",
+    "porters": "Have heavy luggage? Use the <strong>Amalfi Porters</strong> \u2014 a golf-cart service waiting right at the port in Amalfi (Porto di Amalfi). Open every day 6:00\u201320:30. Example fare: from the Amalfi port to the house for 2 people + 2 bags \u2248 \u20ac25. They\u2019ll also carry your bags up the ~200 steps to the apartment.",
     "time_amalfi": "~15 min walk \u00b7 33 steps",
     "time_atrani": "~8 min walk \u00b7 21 steps",
     "arrived": "Welcome to Greg's House!",
@@ -52,7 +52,7 @@
     "title": "Finding the Meeting Point",
     "subtitle": "Step-by-step walking guide",
     "tldr": "Walk from Amalfi through the coastal tunnel to Atrani. The meeting point is just past the tunnel exit at the Atrani center.",
-    "time_amalfi": "~12 min walk \u00b7 15 steps",
+    "time_amalfi": "~11 min walk \u00b7 14 steps",
     "from_atrani_title": "From Atrani",
     "from_atrani_desc": "The meeting point is right at the tunnel exit in Atrani. If you're already in Atrani, it's just a short walk.",
     "arrived": "You've reached the Meeting Point!",
@@ -232,11 +232,19 @@
     },
     "seg-c": {
       "01": {
-        "caption": "At the tunnel exit, you'll see the road leading into Atrani with directional signs ahead.",
-        "alt": "Atrani tunnel exit with road signs and town view"
+        "caption": "A beautiful view at the entrance to Atrani. If you came from Amalfi, please wait for us here \u2014 we'll come meet you and walk you to the apartment.",
+        "alt": "Scenic view at the entrance to Atrani town"
       },
       "02": {
-        "caption": "This is the meeting point! You've arrived. Look for Greg nearby.",
+        "caption": "Walk past the town pharmacy and keep going straight ahead.",
+        "alt": "Atrani street passing the town pharmacy"
+      },
+      "03": {
+        "caption": "You're almost at the Meeting Point \u2014 keep going.",
+        "alt": "Narrow Atrani street approaching the meeting point"
+      },
+      "04": {
+        "caption": "You've reached the Meeting Point! Look for Greg nearby.",
         "alt": "The meeting point at the Atrani center"
       }
     }

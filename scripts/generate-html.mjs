@@ -118,12 +118,12 @@ const routes = [
     routeId: 'amalfi-awesome',
     segments: [
       { id: 'seg-a', count: 13, label: null },
-      { id: 'seg-c', count: 2, imgStart: 1, dividerKey: 'common.now_in_atrani', dividerText: 'You are now entering Atrani' },
+      { id: 'seg-c', count: 1, imgStart: 1, dividerKey: 'common.now_in_atrani', dividerText: 'You are now entering Atrani' },
     ],
     railSegments: [
       { id: 'amalfi', i18nKey: 'rail.amalfi', label: 'Amalfi', step: 1 },
       { id: 'tunnel', i18nKey: 'rail.tunnel', label: 'Tunnel', step: 8 },
-      { id: 'meeting', i18nKey: 'rail.meeting', label: 'Meeting Point', step: 15 },
+      { id: 'meeting', i18nKey: 'rail.meeting', label: 'Meeting Point', step: 14 },
     ],
     arrivalKey: 'awesome.arrived',
     arrivalText: 'You\'ve reached the Meeting Point!',

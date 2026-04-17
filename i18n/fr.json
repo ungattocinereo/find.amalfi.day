@@ -41,7 +41,7 @@
     "title": "Trouver Greg's House",
     "subtitle": "Guide de marche \u00e9tape par \u00e9tape",
     "tldr": "15 minutes \u00e0 pied depuis Amalfi. Suis la route c\u00f4ti\u00e8re \u00e0 travers le tunnel jusqu\u2019\u00e0 Atrani, puis parcours les ruelles charmantes jusqu\u2019\u00e0 la maison.",
-    "porters": "Des bagages lourds ? Cherche les <strong>Amalfi Porters</strong> \u2014 de petites voiturettes de golf au port et \u00e0 l\u2019arr\u00eat de bus. Pour environ \u20ac20, ils te conduisent jusqu\u2019\u00e0 la maison et peuvent porter tes bagages sur les ~200 marches jusqu\u2019\u00e0 l\u2019appartement.",
+    "porters": "Des bagages lourds ? Utilise les <strong>Amalfi Porters</strong> \u2014 un service de voiturettes de golf qui attend directement au port d\u2019Amalfi (Porto di Amalfi). Ouvert tous les jours de 6h00 \u00e0 20h30. Tarif indicatif : du port d\u2019Amalfi \u00e0 la maison pour 2 personnes + 2 bagages \u2248 \u20ac25. Ils portent aussi tes bagages sur les ~200 marches jusqu\u2019\u00e0 l\u2019appartement.",
     "time_amalfi": "~15 min \u00e0 pied \u00b7 33 \u00e9tapes",
     "time_atrani": "~8 min \u00e0 pied \u00b7 21 \u00e9tapes",
     "arrived": "Bienvenue chez Greg's House !",
@@ -52,7 +52,7 @@
     "title": "Trouver le point de rendez-vous",
     "subtitle": "Guide de marche \u00e9tape par \u00e9tape",
     "tldr": "Marche depuis Amalfi \u00e0 travers le tunnel c\u00f4tier jusqu\u2019\u00e0 Atrani. Le point de rendez-vous se trouve juste apr\u00e8s la sortie du tunnel, au centre d\u2019Atrani.",
-    "time_amalfi": "~12 min \u00e0 pied \u00b7 15 \u00e9tapes",
+    "time_amalfi": "~11 min \u00e0 pied \u00b7 14 \u00e9tapes",
     "from_atrani_title": "Depuis Atrani",
     "from_atrani_desc": "Le point de rendez-vous est juste \u00e0 la sortie du tunnel \u00e0 Atrani. Si tu es d\u00e9j\u00e0 \u00e0 Atrani, c\u2019est \u00e0 deux pas.",
     "arrived": "Tu as atteint le point de rendez-vous !",
@@ -232,11 +232,19 @@
     },
     "seg-c": {
       "01": {
-        "caption": "\u00c0 la sortie du tunnel, tu verras la route menant \u00e0 Atrani avec des panneaux directionnels devant toi.",
-        "alt": "Sortie du tunnel d\u2019Atrani avec panneaux routiers et vue sur le village"
+        "caption": "Une belle vue \u00e0 l\u2019entr\u00e9e d\u2019Atrani. Si tu viens d\u2019Amalfi, attends-nous ici \u2014 nous viendrons te chercher et t\u2019accompagner jusqu\u2019\u00e0 l\u2019appartement.",
+        "alt": "Vue pittoresque \u00e0 l\u2019entr\u00e9e du village d\u2019Atrani"
       },
       "02": {
-        "caption": "C\u2019est le point de rendez-vous ! Tu es arriv\u00e9. Cherche Greg dans les environs.",
+        "caption": "Passe devant la pharmacie du village et continue tout droit.",
+        "alt": "Ruelle d\u2019Atrani passant devant la pharmacie"
+      },
+      "03": {
+        "caption": "Tu es presque au point de rendez-vous \u2014 continue.",
+        "alt": "Ruelle \u00e9troite d\u2019Atrani approchant du point de rendez-vous"
+      },
+      "04": {
+        "caption": "Tu as atteint le point de rendez-vous ! Cherche Greg dans les parages.",
         "alt": "Le point de rendez-vous au centre d\u2019Atrani"
       }
     }
