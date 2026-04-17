@@ -41,7 +41,7 @@
     "title": "Finding Greg's House",
     "subtitle": "Step-by-step walking guide",
     "tldr": "15-minute walk from Amalfi. Follow the coastal road through the tunnel to Atrani, then navigate through the charming streets up to the house.",
-    "porters": "Have heavy luggage? Use the <strong>Amalfi Porters</strong> \u2014 a golf-cart service waiting right at the port in Amalfi (Porto di Amalfi). Open every day 6:00\u201320:30. Example fare: from the Amalfi port to the house for 2 people + 2 bags \u2248 \u20ac25. They\u2019ll also carry your bags up the ~200 steps to the apartment.",
+    "porters": "Have heavy luggage? Use the <strong>Amalfi Porters</strong> \u2014 a golf-cart service waiting right at the port in Amalfi (Porto di Amalfi). Open every day 6:00\u201320:30. Example fare: from the Amalfi port to the house for 2 people + 2 bags \u2248 \u20ac25.",
     "time_amalfi": "~15 min walk \u00b7 33 steps",
     "time_atrani": "~8 min walk \u00b7 21 steps",
     "arrived": "Welcome to Greg's House!",
@@ -232,20 +232,24 @@
     },
     "seg-c": {
       "01": {
-        "caption": "A beautiful view at the entrance to Atrani. If you came from Amalfi, please wait for us here \u2014 we'll come meet you and walk you to the apartment.",
-        "alt": "Scenic view at the entrance to Atrani town"
+        "caption": "You're at the Atrani bus stop. Start your walk toward the tunnel.",
+        "alt": "Atrani bus stop \u2014 starting point toward the tunnel"
       },
       "02": {
-        "caption": "Walk past the town pharmacy and keep going straight ahead.",
-        "alt": "Atrani street passing the town pharmacy"
+        "caption": "Cross the road safely and continue toward the tunnel.",
+        "alt": "Pedestrian crossing on the road toward the tunnel"
       },
       "03": {
-        "caption": "You're almost at the Meeting Point \u2014 keep going.",
-        "alt": "Narrow Atrani street approaching the meeting point"
+        "caption": "Pass the town pharmacy on your right and keep going.",
+        "alt": "Atrani street with the town pharmacy on the right"
       },
       "04": {
-        "caption": "You've reached the Meeting Point! Look for Greg nearby.",
-        "alt": "The meeting point at the Atrani center"
+        "caption": "You're almost at the tunnel. Step into a safe spot.",
+        "alt": "Approach to the tunnel in Atrani"
+      },
+      "05": {
+        "caption": "Wait in the shade by the tunnel in a safe spot \u2014 Greg will be there soon, or he's already waiting.",
+        "alt": "Safe waiting spot in the shade beside the tunnel"
       }
     }
   }

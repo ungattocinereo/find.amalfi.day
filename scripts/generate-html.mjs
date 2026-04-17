@@ -118,7 +118,7 @@ const routes = [
     routeId: 'amalfi-awesome',
     segments: [
       { id: 'seg-a', count: 13, label: null },
-      { id: 'seg-c', count: 1, imgStart: 1, dividerKey: 'common.now_in_atrani', dividerText: 'You are now entering Atrani' },
+      { id: 'seg-c', count: 1, imgStart: 5, dividerKey: 'common.now_in_atrani', dividerText: 'You are now entering Atrani' },
     ],
     railSegments: [
       { id: 'amalfi', i18nKey: 'rail.amalfi', label: 'Amalfi', step: 1 },

@@ -41,7 +41,7 @@
     "title": "Greg's House finden",
     "subtitle": "Schritt-f\u00fcr-Schritt-Wegbeschreibung",
     "tldr": "15 Minuten Fu\u00dfweg von Amalfi. Folge der K\u00fcstenstra\u00dfe durch den Tunnel nach Atrani und geh dann durch die charmanten Gassen hinauf zum Haus.",
-    "porters": "Schweres Gep\u00e4ck? Nutze die <strong>Amalfi Porters</strong> \u2014 ein Golfcart-Service, der direkt am Hafen von Amalfi (Porto di Amalfi) wartet. T\u00e4glich ge\u00f6ffnet von 6:00 bis 20:30. Beispielpreis: vom Hafen Amalfi zum Haus f\u00fcr 2 Personen + 2 Gep\u00e4ckst\u00fccke \u2248 \u20ac25. Sie tragen dein Gep\u00e4ck auch die ca. 200 Stufen hoch zur Wohnung.",
+    "porters": "Schweres Gep\u00e4ck? Nutze die <strong>Amalfi Porters</strong> \u2014 ein Golfcart-Service, der direkt am Hafen von Amalfi (Porto di Amalfi) wartet. T\u00e4glich ge\u00f6ffnet von 6:00 bis 20:30. Beispielpreis: vom Hafen Amalfi zum Haus f\u00fcr 2 Personen + 2 Gep\u00e4ckst\u00fccke \u2248 \u20ac25.",
     "time_amalfi": "~15 Min. zu Fu\u00df \u00b7 33 Schritte",
     "time_atrani": "~8 Min. zu Fu\u00df \u00b7 21 Schritte",
     "arrived": "Willkommen bei Greg's House!",
@@ -232,20 +232,24 @@
     },
     "seg-c": {
       "01": {
-        "caption": "Ein sch\u00f6ner Blick am Eingang von Atrani. Wenn du aus Amalfi kommst, warte bitte hier auf uns \u2014 wir holen dich ab und begleiten dich bis zur Wohnung.",
-        "alt": "Malerischer Blick am Eingang zum Ort Atrani"
+        "caption": "Du bist an der Bushaltestelle Atrani. Starte deinen Weg in Richtung Tunnel.",
+        "alt": "Bushaltestelle Atrani \u2014 Ausgangspunkt Richtung Tunnel"
       },
       "02": {
-        "caption": "Geh an der Apotheke des Ortes vorbei und immer geradeaus weiter.",
-        "alt": "Gasse in Atrani an der Apotheke vorbei"
+        "caption": "\u00dcberquere die Stra\u00dfe sicher und geh weiter Richtung Tunnel.",
+        "alt": "Fu\u00dfg\u00e4ngerquerung auf der Stra\u00dfe zum Tunnel"
       },
       "03": {
-        "caption": "Du bist fast am Treffpunkt \u2014 weiter geradeaus.",
-        "alt": "Enge Gasse in Atrani kurz vor dem Treffpunkt"
+        "caption": "Geh an der Apotheke des Ortes rechts vorbei und weiter.",
+        "alt": "Stra\u00dfe in Atrani mit der Apotheke auf der rechten Seite"
       },
       "04": {
-        "caption": "Du hast den Treffpunkt erreicht! Halt nach Greg Ausschau.",
-        "alt": "Der Treffpunkt im Zentrum von Atrani"
+        "caption": "Du bist fast am Tunnel. Stell dich an eine sichere Stelle.",
+        "alt": "Ann\u00e4herung an den Tunnel in Atrani"
+      },
+      "05": {
+        "caption": "Warte im Schatten am Tunnel an einer sicheren Stelle \u2014 Greg kommt gleich, oder er ist schon da.",
+        "alt": "Sicherer Warteplatz im Schatten neben dem Tunnel"
       }
     }
   }

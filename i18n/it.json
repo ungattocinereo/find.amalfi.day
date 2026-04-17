@@ -41,7 +41,7 @@
     "title": "Come trovare Greg's House",
     "subtitle": "Guida passo passo a piedi",
     "tldr": "15 minuti a piedi da Amalfi. Segui la strada costiera attraverso il tunnel fino ad Atrani, poi percorri le stradine del centro fino alla casa.",
-    "porters": "Hai bagagli pesanti? Usa gli <strong>Amalfi Porters</strong> \u2014 un servizio di golf cart che ti aspetta direttamente al porto di Amalfi (Porto di Amalfi). Aperto tutti i giorni 6:00\u201320:30. Tariffa indicativa: dal porto di Amalfi alla casa per 2 persone + 2 bagagli \u2248 \u20ac25. Possono anche portare i tuoi bagagli su per i ~200 gradini fino all\u2019appartamento.",
+    "porters": "Hai bagagli pesanti? Usa gli <strong>Amalfi Porters</strong> \u2014 un servizio di golf cart che ti aspetta direttamente al porto di Amalfi (Porto di Amalfi). Aperto tutti i giorni 6:00\u201320:30. Tariffa indicativa: dal porto di Amalfi alla casa per 2 persone + 2 bagagli \u2248 \u20ac25.",
     "time_amalfi": "~15 min a piedi \u00b7 33 passi",
     "time_atrani": "~8 min a piedi \u00b7 21 passi",
     "arrived": "Benvenuto a Greg's House!",
@@ -232,20 +232,24 @@
     },
     "seg-c": {
       "01": {
-        "caption": "Una bella vista all'ingresso di Atrani. Se arrivi da Amalfi, aspettaci qui \u2014 verremo a prenderti e ti accompagneremo fino all'appartamento.",
-        "alt": "Vista panoramica all'ingresso di Atrani"
+        "caption": "Sei alla fermata dell'autobus di Atrani. Comincia a camminare in direzione del tunnel.",
+        "alt": "Fermata dell'autobus di Atrani \u2014 punto di partenza verso il tunnel"
       },
       "02": {
-        "caption": "Passa davanti alla farmacia del paese e continua dritto.",
-        "alt": "Via di Atrani davanti alla farmacia del paese"
+        "caption": "Attraversa la strada in sicurezza e prosegui verso il tunnel.",
+        "alt": "Attraversamento pedonale sulla strada verso il tunnel"
       },
       "03": {
-        "caption": "Sei quasi al punto d'incontro \u2014 continua cos\u00ec.",
-        "alt": "Stradina di Atrani in avvicinamento al punto d'incontro"
+        "caption": "Passa davanti alla farmacia del paese, sulla tua destra, e continua.",
+        "alt": "Via di Atrani con la farmacia del paese sulla destra"
       },
       "04": {
-        "caption": "Sei arrivato al punto d'incontro! Cerca Greg nei dintorni.",
-        "alt": "Il punto d'incontro nel centro di Atrani"
+        "caption": "Sei quasi al tunnel. Mettiti in un posto sicuro.",
+        "alt": "Avvicinamento al tunnel ad Atrani"
+      },
+      "05": {
+        "caption": "Aspetta all'ombra vicino al tunnel, in un posto sicuro \u2014 Greg arriver\u00e0 a breve, o \u00e8 gi\u00e0 l\u00ec.",
+        "alt": "Punto d'attesa sicuro all'ombra accanto al tunnel"
       }
     }
   }
