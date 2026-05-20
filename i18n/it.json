@@ -45,7 +45,7 @@
     "time_amalfi": "~15 min a piedi \u00b7 33 passi",
     "time_atrani": "~8 min a piedi \u00b7 21 passi",
     "arrived": "Benvenuto a Greg's House!",
-    "arrival_text": "Ce l'hai fatta! Suona il campanello a sinistra \u2014 ti vedremo subito.",
+    "arrival_text": "Ce l'hai fatta! Il campanello \u00e8 a sinistra della porta marrone, prima dell\u2019ingresso al giardino.",
     "wifi_copy": "Copia password"
   },
   "awesome": {
@@ -196,8 +196,8 @@
         "alt": "Piccolo cortile a Traversa Dragone ad Atrani con piante"
       },
       "20": {
-        "caption": "Vai verso la porta verde. Vedrai un campanello a sinistra \u2014 suonalo e verremo subito ad accoglierti. Benvenuto, sei arrivato!",
-        "alt": "Porta d\u2019ingresso verde di Greg\u2019s House con campanello in un passaggio in pietra"
+        "caption": "La casa \u00e8 dietro questo bel giardinetto. Guarda la porta marrone: il campanello \u00e8 alla sua sinistra, prima dell\u2019ingresso al giardino.",
+        "alt": "Piccolo giardino davanti a Greg\u2019s House con porta marrone e campanello a sinistra"
       }
     },
     "seg-b-alt": {

@@ -45,7 +45,7 @@
     "time_amalfi": "~15 Min. zu Fu\u00df \u00b7 33 Schritte",
     "time_atrani": "~8 Min. zu Fu\u00df \u00b7 21 Schritte",
     "arrived": "Willkommen bei Greg's House!",
-    "arrival_text": "Geschafft! Bitte klingeln Sie links an der T\u00fcr \u2014 wir sehen Sie sofort.",
+    "arrival_text": "Geschafft! Die Klingel ist links von der braunen T\u00fcr, vor dem Garteneingang.",
     "wifi_copy": "Passwort kopieren"
   },
   "awesome": {
@@ -196,8 +196,8 @@
         "alt": "Kleiner Innenhof an der Traversa Dragone in Atrani mit Pflanzen"
       },
       "20": {
-        "caption": "Geh zur gr\u00fcnen T\u00fcr. Links siehst du eine Klingel \u2014 dr\u00fcck drauf und wir kommen sofort, um dich zu begr\u00fc\u00dfen. Willkommen, du bist da!",
-        "alt": "Gr\u00fcne Eingangst\u00fcr von Greg\u2019s House mit Klingel im Steindurchgang"
+        "caption": "Das Haus liegt hinter diesem sch\u00f6nen kleinen Garten. Orientiere dich an der braunen T\u00fcr: Die Klingel ist links davon, vor dem Garteneingang.",
+        "alt": "Kleiner Garten vor Greg\u2019s House mit brauner Eingangst\u00fcr und Klingel links"
       }
     },
     "seg-b-alt": {

@@ -45,7 +45,7 @@
     "time_amalfi": "~15 min walk \u00b7 33 steps",
     "time_atrani": "~8 min walk \u00b7 21 steps",
     "arrived": "Welcome to Greg's House!",
-    "arrival_text": "You've made it! Please ring the doorbell on the left \u2014 we'll see you right away.",
+    "arrival_text": "You've made it! The doorbell is left of the brown door, before the garden entrance.",
     "wifi_copy": "Copy password"
   },
   "awesome": {
@@ -196,8 +196,8 @@
         "alt": "Small courtyard at Traversa Dragone in Atrani with plants"
       },
       "20": {
-        "caption": "Walk to the green door. You\u2019ll see a doorbell on the left \u2014 press it and we\u2019ll come meet you right away. Welcome, you\u2019ve arrived!",
-        "alt": "Green entrance door of Greg\u2019s House with doorbell in a stone passage"
+        "caption": "The house is behind this lovely front garden. Look for the brown door: the bell is on its left, before the garden entrance.",
+        "alt": "Small front garden at Greg\u2019s House with brown entrance door and doorbell on the left"
       }
     },
     "seg-b-alt": {
