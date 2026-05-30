@@ -1,12 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
+  "redirects": [
     {
       "source": "/",
       "has": [
         { "type": "host", "value": "awesome.amalfi.day" }
       ],
-      "destination": "/a/"
+      "destination": "/a/",
+      "permanent": false
     }
   ],
   "headers": [
