@@ -1,4 +1,14 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "rewrites": [
+    {
+      "source": "/",
+      "has": [
+        { "type": "host", "value": "awesome.amalfi.day" }
+      ],
+      "destination": "/a/"
+    }
+  ],
   "headers": [
     {
       "source": "/img/(.*)",
