@@ -1361,7 +1361,7 @@ body.lang-picker-open { overflow: hidden; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--spacing-md);
+  gap: clamp(8px, 3vw, var(--spacing-md));
   padding: 10px var(--spacing-md) calc(10px + env(safe-area-inset-bottom));
   background: rgba(250, 246, 241, 0.82);
   backdrop-filter: blur(20px) saturate(180%);
@@ -1425,6 +1425,7 @@ body.lang-picker-open { overflow: hidden; }
 
 .footer-steps {
   flex: 1 1 auto;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1482,30 +1483,37 @@ body.lang-picker-open { overflow: hidden; }
   transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* PDF button relocated into drawer header */
-.drawer-pdf {
+/* Download action stays visible in the fixed route footer */
+.footer-pdf {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
   gap: 6px;
-  padding: 8px 14px;
+  min-height: 48px;
+  padding: 0 12px;
   font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 700;
   color: var(--color-accent);
   background: var(--color-accent-light);
-  border-radius: 100px;
-  min-height: 36px;
+  border-radius: 14px;
   transition: background 0.15s ease, transform 0.1s ease;
 }
 
-.drawer-pdf .lucide { width: 16px; height: 16px; }
+.footer-pdf .lucide {
+  width: 17px;
+  height: 17px;
+}
 
-.drawer-pdf:hover,
-.drawer-pdf:focus-visible {
+.footer-pdf:hover,
+.footer-pdf:focus-visible {
   background: rgba(255, 89, 0, 0.18);
 }
 
-.drawer-pdf:active { transform: scale(0.96); }
+.footer-pdf:active {
+  transform: scale(0.96);
+}
 
 /* ==========================================================================
    SHARED / GLOBAL

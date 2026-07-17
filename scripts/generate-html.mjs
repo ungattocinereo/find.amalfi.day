@@ -291,9 +291,6 @@ ${stepsHtml}
     <div class="drawer-sheet">
       <div class="drawer-handle" data-drawer-close></div>
       <div class="drawer-header">
-        <button type="button" class="drawer-pdf" id="btn-pdf" title="Download PDF" aria-label="Download PDF">
-          <i data-lucide="download"></i> <span data-i18n="common.download_pdf">PDF</span>
-        </button>
         <h3 class="drawer-title" data-i18n="common.all_steps">All steps</h3>
         <button type="button" class="drawer-close" aria-label="Close" data-drawer-close>
           <i data-lucide="x"></i>
@@ -313,6 +310,9 @@ ${langPickerMarkup()}
     <button class="footer-steps" id="btn-steps" aria-label="Show all steps" data-i18n-aria="common.steps_drawer">
       <span class="footer-steps-counter"><span id="footer-step-num">1</span><span class="footer-steps-sep">/</span>${totalSteps}</span>
       <span class="footer-steps-bar"><span class="footer-steps-bar-fill" id="footer-steps-fill"></span></span>
+    </button>
+    <button type="button" class="footer-pdf" id="btn-pdf" title="Download PDF" aria-label="Download PDF">
+      <i data-lucide="download"></i> <span data-i18n="common.download_pdf">PDF</span>
     </button>
     <button class="footer-icon-btn footer-icon-btn--primary" id="btn-next" aria-label="Next step" data-i18n-aria="common.next">
       <i data-lucide="chevron-right"></i>
